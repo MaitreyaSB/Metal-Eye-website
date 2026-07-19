@@ -4,24 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Metaleye Visual Studios | Maitreya Bhagwat</title>
+    
+    <!-- Favicon Links -->
+    <link rel="icon" type="image/png" href="android-chrome-512x512.png">
+    <link rel="apple-touch-icon" href="android-chrome-512x512.png">
+	
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Upgraded Artistic & Technical Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* Deeper, more cinematic background colors */
             --bg-dark: #090a0f; 
             --bg-card: #12131a;
             --text-light: #e0e0e0;
             --text-muted: #8b8d98;
-            /* Richer, molten gold and raw silver */
             --gold: #e5a93d;
             --gold-hover: #ffc252;
             --silver: #c4c7cc;
             --border-color: #242633;
+        }
+
+        /* Custom Studio Cursor Base (Hiding Default) */
+        @media (min-width: 769px) {
+            * {
+                cursor: none !important;
+            }
         }
 
         * {
@@ -31,17 +40,61 @@
         }
 
         body {
-            /* Telemetry/Technical font for reading */
             font-family: 'Rajdhani', sans-serif;
             background-color: var(--bg-dark);
             color: var(--text-light);
             line-height: 1.6;
             font-size: 1.1rem;
+            overflow-x: hidden;
         }
 
-        /* Architectural/Cinematic font for Headers */
         h1, h2, h3, .logo-text, .sub-text, .view-click-hint {
             font-family: 'Syncopate', sans-serif;
+        }
+
+        /* --- Custom Cursor Styling --- */
+        .cursor-dot {
+            width: 8px; height: 8px;
+            background-color: var(--gold);
+            position: fixed; border-radius: 50%;
+            pointer-events: none; z-index: 10000;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s;
+        }
+        .cursor-outline {
+            width: 40px; height: 40px;
+            border: 1px solid rgba(229, 169, 61, 0.4); /* Swapped from white/silver to dim gold */
+            position: fixed; border-radius: 50%;
+            pointer-events: none; z-index: 9998;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s, background-color 0.3s, border-color 0.3s;
+        }
+        @media (max-width: 768px) {
+            .cursor-dot, .cursor-outline { display: none; }
+            * { cursor: auto !important; }
+        }
+
+        /* --- Cinematic Preloader --- */
+        #preloader {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: var(--bg-dark);
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        #preloader.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .preloader-gear {
+            font-size: 3rem;
+            color: var(--gold);
+            animation: mechanicalSpin 3s linear infinite;
+            margin-bottom: 1rem;
         }
 
         /* Header / Navigation */
@@ -54,645 +107,153 @@
             top: 0;
             z-index: 1000;
         }
-
         .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            max-width: 1200px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center;
             padding: 1.2rem 2rem;
         }
+        .logo-text { font-weight: 700; font-size: 1.3rem; letter-spacing: 3px; color: var(--silver); }
+        .logo-text span { color: var(--gold); }
+        nav ul { display: flex; list-style: none; gap: 2.5rem; }
+        nav a { color: var(--text-light); text-decoration: none; font-size: 0.95rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; transition: all 0.3s ease; }
+        nav a:hover { color: var(--gold); text-shadow: 0 0 10px rgba(229, 169, 61, 0.4); }
 
-        .logo-text {
-            font-weight: 700;
-            font-size: 1.3rem;
-            letter-spacing: 3px;
-            color: var(--silver);
-        }
-
-        .logo-text span {
-            color: var(--gold);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-        }
-
-        nav a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: all 0.3s ease;
-            font-family: 'Rajdhani', sans-serif;
-        }
-
-        nav a:hover {
-            color: var(--gold);
-            text-shadow: 0 0 10px rgba(229, 169, 61, 0.4);
-        }
-
-        /* --- ARTISTIC HERO SECTION --- */
+        /* --- HERO SECTION --- */
         .hero {
-            height: 85vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 2rem;
-            margin-top: 60px;
-            /* Studio Grid + Ambient Spotlight */
-            background: 
-                radial-gradient(circle at center, rgba(229, 169, 61, 0.08) 0%, rgba(9, 10, 15, 1) 60%),
-                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            height: 85vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; padding: 0 2rem; margin-top: 60px;
+            background: radial-gradient(circle at center, rgba(229, 169, 61, 0.08) 0%, rgba(9, 10, 15, 1) 60%),
+                        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
             background-size: 100% 100%, 40px 40px, 40px 40px;
             border-bottom: 1px solid var(--border-color);
-            position: relative;
-            overflow: hidden;
+            position: relative; overflow: hidden;
+        }
+        .hero-content-wrapper {
+            transition: transform 0.1s ease-out;
+            display: flex; flex-direction: column; align-items: center;
         }
 
-        /* Industrial Branding Container */
         .logo-widget {
-            margin-bottom: 3rem;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 200px;
-            height: 140px;
-            /* Ambient backglow */
-            box-shadow: 0 0 80px rgba(229, 169, 61, 0.15);
-            border-radius: 50%;
+            margin-bottom: 3rem; position: relative; display: flex; align-items: center; justify-content: center;
+            width: 200px; height: 140px; box-shadow: 0 0 80px rgba(229, 169, 61, 0.15); border-radius: 50%;
         }
-
-        /* Sharp Camera-Focus Targeting Brackets */
         .logo-widget::before, .logo-widget::after {
-            content: '';
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            transition: all 0.5s cubic-bezier(0.25, 1, 0.25, 1);
-            z-index: 5;
-            opacity: 0.7;
+            content: ''; position: absolute; width: 50px; height: 50px; transition: all 0.5s cubic-bezier(0.25, 1, 0.25, 1); z-index: 5; opacity: 0.7;
         }
+        .logo-widget::before { top: -10px; left: -10px; border-top: 2px solid var(--silver); border-left: 2px solid var(--silver); }
+        .logo-widget::after { bottom: -10px; right: -10px; border-bottom: 2px solid var(--gold); border-right: 2px solid var(--gold); }
+        .hero:hover .logo-widget::before { top: 15px; left: 20px; opacity: 1; }
+        .hero:hover .logo-widget::after { bottom: 15px; right: 20px; opacity: 1; }
 
-        .logo-widget::before {
-            top: -10px;
-            left: -10px;
-            border-top: 2px solid var(--silver);
-            border-left: 2px solid var(--silver);
-        }
-
-        .logo-widget::after {
-            bottom: -10px;
-            right: -10px;
-            border-bottom: 2px solid var(--gold);
-            border-right: 2px solid var(--gold);
-        }
-
-        /* Focus pull effect on hover */
-        .hero:hover .logo-widget::before {
-            top: 15px;
-            left: 20px;
-            opacity: 1;
-        }
-
-        .hero:hover .logo-widget::after {
-            bottom: 15px;
-            right: 20px;
-            opacity: 1;
-        }
-
-        /* The 3D Brushed Metal Eye Shape */
         .eye-lid {
-            position: absolute;
-            width: 130px;
-            height: 130px;
+            position: absolute; width: 130px; height: 130px;
             background: linear-gradient(135deg, #2a2c36 0%, #0d0e14 100%);
-            border-radius: 75% 0; /* Creates the almond shape */
-            transform: rotate(45deg);
-            /* Sleeker, artistic metal edging */
-            border: 2px solid #3a3d4a;
-            border-top: 2px solid #8b8d98;
-            border-right: 2px solid #8b8d98;
-            box-shadow: 
-                0 20px 40px rgba(0,0,0,0.8),
-                inset 0 0 30px rgba(0,0,0,1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            z-index: 2;
+            border-radius: 75% 0; transform: rotate(45deg);
+            border: 2px solid #3a3d4a; border-top: 2px solid #8b8d98; border-right: 2px solid #8b8d98;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8), inset 0 0 30px rgba(0,0,0,1);
+            display: flex; align-items: center; justify-content: center; overflow: hidden; z-index: 2;
         }
+        .eye-lid-content { transform: rotate(-45deg); display: flex; align-items: center; justify-content: center; position: relative; width: 100%; height: 100%; }
+        .gear-icon { font-size: 6.5rem; color: #1a1c23; position: absolute; text-shadow: 1px 1px 3px rgba(0,0,0,0.9); animation: mechanicalSpin 25s linear infinite; }
 
-        /* Un-rotate the contents inside the eye */
-        .eye-lid-content {
-            transform: rotate(-45deg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
+        @keyframes mechanicalSpin { 100% { transform: rotate(360deg); } }
 
-        /* Gear functioning as the Iris */
-        .gear-icon {
-            font-size: 6.5rem;
-            color: #1a1c23; 
-            position: absolute;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
-            animation: mechanicalSpin 25s linear infinite;
-        }
-
-        @keyframes mechanicalSpin {
-            100% { transform: rotate(360deg); }
-        }
-
-        /* --- THE NEW CINEMATIC MULTI-COATED LENS --- */
         .lens-inner {
-            position: absolute;
-            width: 55px;
-            height: 55px;
-            background-color: #030305;
-            border-radius: 50%;
-            border: 4px solid #111;
-            z-index: 3;
-            box-shadow: 
-                0 0 25px rgba(0, 0, 0, 0.9), 
-                inset 0 0 10px rgba(0, 0, 0, 1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
+            position: absolute; width: 55px; height: 55px; background-color: #030305;
+            border-radius: 50%; border: 4px solid #111; z-index: 3;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.9), inset 0 0 10px rgba(0, 0, 0, 1);
+            display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;
         }
-
-        /* Multi-coated Glass Reflections (Cyan, Magenta, Green) */
         .lens-glass {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            border-radius: 50%;
-            /* Camera lens anti-reflective coating colors */
-            background: 
-                radial-gradient(circle at 35% 25%, rgba(0, 255, 204, 0.5) 0%, transparent 40%), /* Cyan highlight */
-                radial-gradient(circle at 75% 65%, rgba(255, 0, 128, 0.4) 0%, transparent 45%), /* Magenta shadow */
-                radial-gradient(circle at 50% 85%, rgba(0, 255, 100, 0.25) 0%, transparent 40%); /* Green bottom */
-            box-shadow: 
-                inset 3px 3px 6px rgba(255, 255, 255, 0.15),
-                inset -4px -4px 10px rgba(0, 255, 204, 0.2);
-            z-index: 2;
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0; border-radius: 50%;
+            background: radial-gradient(circle at 35% 25%, rgba(0, 255, 204, 0.5) 0%, transparent 40%),
+                        radial-gradient(circle at 75% 65%, rgba(255, 0, 128, 0.4) 0%, transparent 45%),
+                        radial-gradient(circle at 50% 85%, rgba(0, 255, 100, 0.25) 0%, transparent 40%);
+            box-shadow: inset 3px 3px 6px rgba(255, 255, 255, 0.15), inset -4px -4px 10px rgba(0, 255, 204, 0.2); z-index: 2;
         }
-
-        /* Slow rotating light flare for realism */
         .lens-flare-overlay {
-            position: absolute;
-            width: 150%;
-            height: 150%;
-            background: conic-gradient(from 0deg, 
-                transparent 0%, 
-                rgba(0, 255, 204, 0.15) 15%, 
-                transparent 30%, 
-                transparent 50%, 
-                rgba(255, 0, 128, 0.15) 65%, 
-                transparent 80%);
-            animation: lensGleam 15s linear infinite;
-            z-index: 3;
+            position: absolute; width: 150%; height: 150%;
+            background: conic-gradient(from 0deg, transparent 0%, rgba(0, 255, 204, 0.15) 15%, transparent 30%, transparent 50%, rgba(255, 0, 128, 0.15) 65%, transparent 80%);
+            animation: lensGleam 15s linear infinite; z-index: 3;
         }
-
-        @keyframes lensGleam {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Deep Aperture / Pupil Core */
+        @keyframes lensGleam { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         .aperture-core {
-            position: absolute;
-            width: 20px;
-            height: 20px;
+            position: absolute; width: 20px; height: 20px;
             background: radial-gradient(circle at 40% 40%, #15151a 0%, #000 60%);
-            border-radius: 50%;
-            border: 1px solid rgba(0, 255, 204, 0.15);
-            box-shadow: 
-                0 0 15px rgba(0,0,0,0.9),
-                inset 0 0 5px rgba(255,0,128,0.2);
-            z-index: 4;
+            border-radius: 50%; border: 1px solid rgba(0, 255, 204, 0.15);
+            box-shadow: 0 0 15px rgba(0,0,0,0.9), inset 0 0 5px rgba(255,0,128,0.2); z-index: 4;
             animation: apertureFocus 4s ease-in-out infinite alternate;
         }
+        @keyframes apertureFocus { 0% { transform: scale(1); opacity: 0.9; } 100% { transform: scale(1.1); opacity: 1; border-color: rgba(0, 255, 204, 0.4); } }
 
-        @keyframes apertureFocus {
-            0% { transform: scale(1); opacity: 0.9; }
-            100% { transform: scale(1.1); opacity: 1; border-color: rgba(0, 255, 204, 0.4); }
-        }
-        /* --- END LENS CSS --- */
+        .hero h1 { font-size: 3.8rem; letter-spacing: 6px; font-weight: 700; margin-bottom: 0.5rem; display: flex; align-items: center; text-transform: uppercase; }
+        .hero .title-metal { color: #ffffff; text-shadow: 2px 2px 0px #444, 0px 10px 20px rgba(0,0,0,0.9); letter-spacing: 10px; }
+        .hero .title-eye { color: var(--gold); text-shadow: 0 0 25px rgba(229, 169, 61, 0.5), 2px 2px 0px #332200; }
 
-        /* Upgraded Cinematic Title */
-        .hero h1 {
-            font-size: 3.8rem; 
-            letter-spacing: 6px;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            text-transform: uppercase;
-        }
+        .sub-studio-container { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem; width: 100%; max-width: 600px; margin-top: 1.5rem; }
+        .sub-line { flex-grow: 1; height: 1px; background-color: var(--gold); box-shadow: 0 0 10px rgba(229, 169, 61, 0.5); opacity: 0.6; }
+        .sub-text { font-size: 0.9rem; letter-spacing: 12px; color: var(--silver); text-shadow: 0 2px 4px rgba(0,0,0,1); }
+        .core-tags { font-size: 1.1rem; letter-spacing: 6px; text-transform: uppercase; font-weight: 500; color: var(--text-muted); }
+        .core-tags span { color: var(--gold); margin: 0 15px; opacity: 0.5; }
 
-        /* Sleek Metal Typography */
-        .hero .title-metal {
-            color: #ffffff;
-            text-shadow: 
-                2px 2px 0px #444, 
-                0px 10px 20px rgba(0,0,0,0.9);
-            letter-spacing: 10px;
-        }
-
-        /* Glowing Accent */
-        .hero .title-eye {
-            color: var(--gold);
-            text-shadow: 
-                0 0 25px rgba(229, 169, 61, 0.5), 
-                2px 2px 0px #332200;
-        }
-
-        .sub-studio-container {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-            width: 100%;
-            max-width: 600px;
-            margin-top: 1.5rem;
-        }
-
-        .sub-line {
-            flex-grow: 1;
-            height: 1px;
-            background-color: var(--gold);
-            box-shadow: 0 0 10px rgba(229, 169, 61, 0.5);
-            opacity: 0.6;
-        }
-
-        .sub-text {
-            font-size: 0.9rem;
-            letter-spacing: 12px;
-            color: var(--silver);
-            text-shadow: 0 2px 4px rgba(0,0,0,1);
-        }
-
-        .core-tags {
-            font-size: 1.1rem;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            font-weight: 500;
-            color: var(--text-muted);
-            font-family: 'Rajdhani', sans-serif;
-        }
+        /* Main Container & Scroll Reveal Class */
+        .container { max-width: 1200px; margin: 0 auto; padding: 5rem 2rem; }
+        section { margin-bottom: 6rem; scroll-margin-top: 120px; }
         
-        .core-tags span {
-            color: var(--gold);
-            margin: 0 15px;
-            opacity: 0.5;
-        }
-        /* --- END HERO SECTION --- */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* Main Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 5rem 2rem;
-        }
+        h2 { text-align: center; font-size: 1.8rem; letter-spacing: 4px; margin-bottom: 3.5rem; position: relative; color: #ffffff; }
+        h2::after { content: ''; display: block; width: 40px; height: 2px; background-color: var(--gold); margin: 1rem auto 0; box-shadow: 0 0 10px rgba(229, 169, 61, 0.5); }
 
-        section {
-            margin-bottom: 6rem;
-            scroll-margin-top: 120px;
-        }
+        /* Services */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2.5rem; }
+        .service-card { background-color: var(--bg-card); border: 1px solid var(--border-color); padding: 3rem 2rem; text-align: center; border-radius: 2px; transition: all 0.4s ease; position: relative; overflow: hidden; }
+        .service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at center, rgba(229, 169, 61, 0.1) 0%, transparent 70%); opacity: 0; transition: opacity 0.4s ease; }
+        .service-card:hover { transform: translateY(-5px); border-color: rgba(229, 169, 61, 0.4); box-shadow: 0 15px 30px rgba(0,0,0,0.6); }
+        .service-card:hover::before { opacity: 1; }
+        .service-card i { font-size: 2.5rem; color: var(--silver); margin-bottom: 2rem; transition: all 0.4s ease; position: relative; }
+        .service-card:hover i { color: var(--gold); transform: scale(1.1); text-shadow: 0 0 15px rgba(229, 169, 61, 0.5); }
+        .service-card h3 { font-size: 1rem; margin-bottom: 1rem; letter-spacing: 2px; color: #ffffff; position: relative; }
+        .service-card p { color: var(--text-muted); font-size: 1rem; margin-bottom: 1.5rem; position: relative; }
+        .view-click-hint { font-size: 0.65rem; color: var(--gold); letter-spacing: 2px; opacity: 0; transform: translateY(10px); transition: all 0.4s ease; position: relative; }
+        .service-card:hover .view-click-hint { opacity: 1; transform: translateY(0); }
 
-        h2 {
-            text-align: center;
-            font-size: 1.8rem;
-            letter-spacing: 4px;
-            margin-bottom: 3.5rem;
-            position: relative;
-            color: #ffffff;
-        }
-
-        h2::after {
-            content: '';
-            display: block;
-            width: 40px;
-            height: 2px;
-            background-color: var(--gold);
-            margin: 1rem auto 0;
-            box-shadow: 0 0 10px rgba(229, 169, 61, 0.5);
-        }
-
-        /* Services Layout - Cinematic Glow Cards */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .service-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            padding: 3rem 2rem;
-            text-align: center;
-            border-radius: 2px;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Ambient hover glow */
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at center, rgba(229, 169, 61, 0.1) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(229, 169, 61, 0.4);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.6);
-        }
-
-        .service-card:hover::before {
-            opacity: 1;
-        }
-
-        .service-card i {
-            font-size: 2.5rem;
-            color: var(--silver);
-            margin-bottom: 2rem;
-            transition: all 0.4s ease;
-            position: relative;
-        }
-        
-        .service-card:hover i {
-            color: var(--gold);
-            transform: scale(1.1);
-            text-shadow: 0 0 15px rgba(229, 169, 61, 0.5);
-        }
-
-        .service-card h3 {
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            letter-spacing: 2px;
-            color: #ffffff;
-            position: relative;
-        }
-
-        .service-card p {
-            color: var(--text-muted);
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-
-        .view-click-hint {
-            font-size: 0.65rem;
-            color: var(--gold);
-            letter-spacing: 2px;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.4s ease;
-            position: relative;
-        }
-
-        .service-card:hover .view-click-hint {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Pricing Table Styling */
-        .pricing-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 2rem;
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-        }
-
-        .pricing-table th, .pricing-table td {
-            padding: 1.5rem;
-            text-align: left;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .pricing-table th {
-            background-color: #0d0e14;
-            color: var(--silver);
-            font-family: 'Syncopate', sans-serif;
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            border-bottom: 2px solid var(--gold);
-        }
-        
-        .pricing-table strong {
-            color: #ffffff;
-            font-family: 'Syncopate', sans-serif;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-        }
-
-        .price-tag {
-            color: var(--gold);
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
+        /* Pricing Table */
+        .pricing-table { width: 100%; border-collapse: collapse; margin-top: 2rem; background-color: var(--bg-card); border: 1px solid var(--border-color); }
+        .pricing-table th, .pricing-table td { padding: 1.5rem; text-align: left; border-bottom: 1px solid var(--border-color); }
+        .pricing-table th { background-color: #0d0e14; color: var(--silver); font-size: 0.75rem; letter-spacing: 2px; border-bottom: 2px solid var(--gold); }
+        .pricing-table strong { color: #ffffff; font-size: 0.8rem; letter-spacing: 1px; }
+        .price-tag { color: var(--gold); font-weight: 700; font-size: 1.2rem; }
 
         /* Contact Section */
-        .contact-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            background-color: var(--bg-card);
-            padding: 4rem;
-            border: 1px solid var(--border-color);
-            position: relative;
-        }
-
-        .contact-info h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            letter-spacing: 2px;
-            color: #ffffff;
-        }
-
-        .contact-info .title-sub {
-            color: var(--silver);
-            font-family: 'Rajdhani', sans-serif;
-            font-weight: 600;
-            font-size: 1.1rem;
-            letter-spacing: 3px;
-            margin-bottom: 3rem;
-            text-transform: uppercase;
-        }
-
-        .info-link-list {
-            list-style: none;
-        }
-
-        .info-link-list li {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            margin-bottom: 1.8rem;
-            font-size: 1.1rem;
-        }
-
-        .info-link-list i {
-            color: var(--gold);
-            font-size: 1.2rem;
-            width: 20px;
-            text-align: center;
-        }
-
-        .info-link-list a {
-            color: var(--text-light);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .info-link-list a:hover {
-            color: var(--gold);
-        }
-
-        /* Form styling */
-        .contact-form form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .form-group input, .form-group textarea, .form-group select {
-            width: 100%;
-            padding: 1.2rem;
-            background-color: #0d0e14;
-            border: 1px solid var(--border-color);
-            color: #ffffff;
-            font-family: 'Rajdhani', sans-serif;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-            outline: none;
-            border-color: var(--gold);
-            box-shadow: 0 0 15px rgba(229, 169, 61, 0.1);
-        }
-
-        button.btn-submit {
-            background-color: var(--gold);
-            color: #090a0f;
-            border: none;
-            padding: 1.2rem;
-            font-family: 'Syncopate', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 3px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        button.btn-submit:hover {
-            background-color: var(--gold-hover);
-            box-shadow: 0 5px 15px rgba(229, 169, 61, 0.4);
-        }
+        .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; background-color: var(--bg-card); padding: 4rem; border: 1px solid var(--border-color); position: relative; }
+        .contact-info h3 { font-size: 1.2rem; margin-bottom: 0.5rem; letter-spacing: 2px; color: #ffffff; }
+        .contact-info .title-sub { color: var(--silver); font-weight: 600; font-size: 1.1rem; letter-spacing: 3px; margin-bottom: 3rem; text-transform: uppercase; }
+        .info-link-list { list-style: none; }
+        .info-link-list li { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.8rem; font-size: 1.1rem; }
+        .info-link-list i { color: var(--gold); font-size: 1.2rem; width: 20px; text-align: center; }
+        .info-link-list a { color: var(--text-light); text-decoration: none; transition: color 0.3s; }
+        
+        .contact-form form { display: flex; flex-direction: column; gap: 1.5rem; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 1.2rem; background-color: #0d0e14; border: 1px solid var(--border-color); color: #ffffff; font-family: 'Rajdhani', sans-serif; font-size: 1.1rem; transition: all 0.3s ease; }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 15px rgba(229, 169, 61, 0.1); }
+        button.btn-submit { background-color: var(--gold); color: #090a0f; border: none; padding: 1.2rem; font-family: 'Syncopate', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 3px; transition: all 0.3s ease; }
 
         /* Footer */
-        footer {
-            background-color: #050508;
-            border-top: 1px solid var(--border-color);
-            padding: 3rem;
-            text-align: center;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            letter-spacing: 2px;
-            font-family: 'Syncopate', sans-serif;
-            text-transform: uppercase;
-        }
+        footer { background-color: #050508; border-top: 1px solid var(--border-color); padding: 3rem; text-align: center; font-size: 0.9rem; color: var(--text-muted); letter-spacing: 2px; font-family: 'Syncopate', sans-serif; text-transform: uppercase; }
         
-        /* Lightbox Gallery Modal */
-        .gallery-overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(5, 5, 8, 0.98);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-            padding: 1.5rem;
-            backdrop-filter: blur(5px);
-        }
+        /* Gallery */
+        .gallery-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(5, 5, 8, 0.98); z-index: 2000; justify-content: center; align-items: center; padding: 1.5rem; backdrop-filter: blur(5px); }
+        .gallery-box { max-width: 900px; width: 100%; background-color: var(--bg-card); border: 1px solid var(--border-color); overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.8); }
+        .gallery-header { padding: 1.5rem; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; }
+        .gallery-header h3 { font-size: 1rem; color: var(--gold); }
+        .gallery-close { background: none; border: none; color: var(--text-muted); font-size: 2rem; transition: color 0.3s; }
+        .gallery-body { padding: 1.5rem; text-align: center; }
+        .gallery-img-holder { width: 100%; height: 450px; background-color: #050508; margin-bottom: 1.5rem; overflow: hidden; }
+        .gallery-img-holder img { width: 100%; height: 100%; object-fit: cover; }
 
-        .gallery-box {
-            max-width: 900px;
-            width: 100%;
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-        }
-
-        .gallery-header {
-            padding: 1.5rem;
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .gallery-header h3 {
-            font-size: 1rem;
-            color: var(--gold);
-        }
-
-        .gallery-close {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            font-size: 2rem;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .gallery-close:hover {
-            color: #ffffff;
-        }
-
-        .gallery-body {
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .gallery-img-holder {
-            width: 100%;
-            height: 450px;
-            background-color: #050508;
-            margin-bottom: 1.5rem;
-            overflow: hidden;
-        }
-
-        .gallery-img-holder img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Responsive Breakpoints */
         @media (max-width: 768px) {
             .nav-container { flex-direction: column; gap: 1.5rem; }
             .hero h1 { font-size: 2.2rem; flex-direction: column; gap: 0.5rem; }
@@ -703,6 +264,16 @@
     </style>
 </head>
 <body>
+
+    <!-- Cinematic Preloader -->
+    <div id="preloader">
+        <i class="fa-solid fa-gear preloader-gear"></i>
+        <div class="sub-text" style="color: var(--gold); font-size: 0.8rem;">INITIALIZING OPTICS</div>
+    </div>
+
+    <!-- Custom Studio Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
 
     <header>
         <div class="nav-container">
@@ -719,39 +290,38 @@
     </header>
 
     <div class="hero">
-        <div class="logo-widget">
-            <div class="eye-lid">
-                <div class="eye-lid-content">
-                    <i class="fa-solid fa-gear gear-icon"></i>
-                    
-                    <!-- THE UPGRADED CAMERA LENS CORE -->
-                    <div class="lens-inner">
-                        <div class="lens-glass"></div>
-                        <div class="lens-flare-overlay"></div>
-                        <div class="aperture-core"></div>
+        <div class="hero-content-wrapper" id="parallax-wrapper">
+            <div class="logo-widget">
+                <div class="eye-lid">
+                    <div class="eye-lid-content">
+                        <i class="fa-solid fa-gear gear-icon"></i>
+                        <div class="lens-inner">
+                            <div class="lens-glass"></div>
+                            <div class="lens-flare-overlay"></div>
+                            <div class="aperture-core"></div>
+                        </div>
                     </div>
-                    
                 </div>
             </div>
-        </div>
 
-        <h1>
-            <span class="title-metal">METAL</span>
-            <span class="title-eye">EYE</span>
-        </h1>
-        <div class="sub-studio-container">
-            <div class="sub-line"></div>
-            <div class="sub-text">Visual Studios</div>
-            <div class="sub-line"></div>
-        </div>
-        <div class="core-tags">
-            Industrial <span>|</span> Product
+            <h1>
+                <span class="title-metal">METAL</span>
+                <span class="title-eye">EYE</span>
+            </h1>
+            <div class="sub-studio-container">
+                <div class="sub-line"></div>
+                <div class="sub-text">Visual Studios</div>
+                <div class="sub-line"></div>
+            </div>
+            <div class="core-tags">
+                Industrial <span>|</span> Product
+            </div>
         </div>
     </div>
 
     <div class="container">
 
-        <section id="about">
+        <section id="about" class="reveal">
             <h2>The Visionary</h2>
             <div style="text-align: center; max-width: 750px; margin: 0 auto;">
                 <h3 style="color: var(--gold); font-size: 1.5rem; margin-bottom: 0.8rem; letter-spacing: 3px;">Maitreya Bhagwat</h3>
@@ -763,31 +333,31 @@
         </section>
 
         <section id="services">
-            <h2>Specialties</h2>
+            <h2 class="reveal">Specialties</h2>
             <div class="services-grid">
                 
-                <div class="service-card" onclick="handleCardClick('industrial')">
+                <div class="service-card reveal" onclick="handleCardClick('industrial')">
                     <i class="fa-solid fa-gear"></i>
                     <h3>Industrial</h3>
                     <p>Machinery, manufacturing processes & heavy industrial environments.</p>
                     <div class="view-click-hint">Initialize Visuals</div>
                 </div>
 
-                <div class="service-card" onclick="handleCardClick('product')">
+                <div class="service-card reveal" onclick="handleCardClick('product')" style="transition-delay: 0.1s;">
                     <i class="fa-solid fa-box-open"></i>
                     <h3>Product</h3>
                     <p>Precision e-commerce, catalogue & high-end brand imagery.</p>
                     <div class="view-click-hint">Initialize Visuals</div>
                 </div>
 
-                <div class="service-card" onclick="handleCardClick('landscape')">
+                <div class="service-card reveal" onclick="handleCardClick('landscape')" style="transition-delay: 0.2s;">
                     <i class="fa-solid fa-mountain-sun"></i>
                     <h3>Landscape</h3>
                     <p>Dramatic environmental and architectural exterior framing.</p>
                     <div class="view-click-hint">Initialize Visuals</div>
                 </div>
 
-                <div class="service-card" onclick="handleCardClick('custom')">
+                <div class="service-card reveal" onclick="handleCardClick('custom')" style="transition-delay: 0.3s;">
                     <i class="fa-solid fa-sliders"></i>
                     <h3>Custom</h3>
                     <p>Bespoke visual productions tailored to your exact creative coordinates.</p>
@@ -797,7 +367,7 @@
             </div>
         </section>
 
-        <section id="pricing">
+        <section id="pricing" class="reveal">
             <h2>Fee Structure</h2>
             <table class="pricing-table">
                 <thead>
@@ -832,7 +402,7 @@
             </table>
         </section>
 
-        <section id="contact">
+        <section id="contact" class="reveal">
             <h2>Initiate Project</h2>
             <div class="contact-wrapper">
                 
@@ -862,7 +432,7 @@
 
                 <div class="contact-form">
                     <form id="bookingForm">
-                        <input type="hidden" name="access_key" value=8c634195-b53e-4aec-9cc7-2ba262698fbe>
+                        <input type="hidden" name="access_key" value="8c634195-b53e-4aec-9cc7-2ba262698fbe">
                         <input type="hidden" name="subject" value="New Inquiry from Metaleye Visual Studios">
                         
                         <div class="form-group">
@@ -912,6 +482,78 @@
     </footer>
 
     <script>
+        // --- 1. Preloader Logic ---
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('preloader').classList.add('fade-out');
+            }, 1200);
+        });
+
+        // --- 2. Custom Studio Cursor Logic ---
+        const dot = document.querySelector('.cursor-dot');
+        const outline = document.querySelector('.cursor-outline');
+        
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
+            
+            dot.style.left = `${posX}px`;
+            dot.style.top = `${posY}px`;
+            
+            outline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 400, fill: "forwards" });
+        });
+
+        const hoverElements = document.querySelectorAll('a, button, .service-card, input, select, textarea, .gallery-close');
+        hoverElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                outline.style.width = '60px';
+                outline.style.height = '60px';
+                outline.style.backgroundColor = 'rgba(229, 169, 61, 0.1)';
+                outline.style.borderColor = 'var(--gold)';
+            });
+            el.addEventListener('mouseleave', () => {
+                outline.style.width = '40px';
+                outline.style.height = '40px';
+                outline.style.backgroundColor = 'transparent';
+                outline.style.borderColor = 'rgba(229, 169, 61, 0.4)';
+            });
+        });
+
+        // --- 3. 3D Parallax Hero Logic ---
+        const hero = document.querySelector('.hero');
+        const parallaxWrapper = document.getElementById('parallax-wrapper');
+        
+        hero.addEventListener('mousemove', (e) => {
+            const x = (window.innerWidth / 2 - e.pageX) / 35;
+            const y = (window.innerHeight / 2 - e.pageY) / 35;
+            parallaxWrapper.style.transform = `translate(${x}px, ${y}px)`;
+        });
+        hero.addEventListener('mouseleave', () => {
+            parallaxWrapper.style.transform = `translate(0px, 0px)`;
+        });
+
+        // --- 4. Scroll Reveal Intersection Observer ---
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) { return; }
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target);
+            });
+        }, revealOptions);
+        
+        revealElements.forEach(el => {
+            revealOnScroll.observe(el);
+        });
+
+        // --- Gallery Data & Logic ---
         const mediaSource = {
             industrial: {
                 title: "Industrial Operations",
@@ -940,11 +582,9 @@
         function handleCardClick(key) {
             const data = mediaSource[key];
             if (!data) return;
-
             document.getElementById('galleryTitle').innerText = data.title;
             document.getElementById('galleryDesc').innerText = data.desc;
             document.getElementById('galleryImage').src = data.img;
-
             overlay.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
@@ -955,15 +595,13 @@
         }
 
         overlay.addEventListener('click', function(e) {
-            if (e.target === overlay) {
-                closeGallery();
-            }
+            if (e.target === overlay) { closeGallery(); }
         });
 
+        // --- Form Submission Logic ---
         const form = document.getElementById('bookingForm');
         form.addEventListener('submit', function(e) {
             e.preventDefault(); 
-            
             const submitButton = document.querySelector('.btn-submit');
             submitButton.innerText = "Transmitting...";
             
@@ -994,6 +632,7 @@
             })
             .finally(() => {
                 submitButton.innerText = "Transmit Inquiry";
+                submitButton.style.backgroundColor = "var(--gold)";
             });
         });
     </script>
