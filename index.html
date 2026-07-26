@@ -20,10 +20,15 @@
             --bg-card: #12131a;
             --text-light: #e0e0e0;
             --text-muted: #8b8d98;
-            --gold: #e5a93d;
+            --gold: #e5a93d; 
             --gold-hover: #ffc252;
             --silver: #c4c7cc;
             --border-color: #242633;
+        }
+
+        /* --- Smooth Scrolling --- */
+        html {
+            scroll-behavior: smooth;
         }
 
         /* Custom Studio Cursor Base (Hiding Default) */
@@ -45,7 +50,7 @@
             color: var(--text-light);
             line-height: 1.6;
             font-size: 1.1rem;
-            overflow-x: hidden;
+            overflow-x: hidden; 
         }
 
         h1, h2, h3, .logo-text, .sub-text, .view-click-hint {
@@ -63,7 +68,7 @@
         }
         .cursor-outline {
             width: 40px; height: 40px;
-            border: 1px solid rgba(229, 169, 61, 0.4); /* Swapped from white/silver to dim gold */
+            border: 1px solid rgba(229, 169, 61, 0.4);
             position: fixed; border-radius: 50%;
             pointer-events: none; z-index: 9998;
             transform: translate(-50%, -50%);
@@ -120,8 +125,10 @@
 
         /* --- HERO SECTION --- */
         .hero {
-            height: 85vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; padding: 0 2rem; margin-top: 60px;
+            min-height: 85vh;
+            height: auto;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; padding: 6rem 2rem; margin-top: 60px;
             background: radial-gradient(circle at center, rgba(229, 169, 61, 0.08) 0%, rgba(9, 10, 15, 1) 60%),
                         linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
                         linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
@@ -193,7 +200,7 @@
 
         .sub-studio-container { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem; width: 100%; max-width: 600px; margin-top: 1.5rem; }
         .sub-line { flex-grow: 1; height: 1px; background-color: var(--gold); box-shadow: 0 0 10px rgba(229, 169, 61, 0.5); opacity: 0.6; }
-        .sub-text { font-size: 0.9rem; letter-spacing: 12px; color: var(--silver); text-shadow: 0 2px 4px rgba(0,0,0,1); }
+        .sub-text { font-size: 0.9rem; letter-spacing: 12px; color: var(--silver); text-shadow: 0 2px 4px rgba(0,0,0,1); text-transform: uppercase; }
         .core-tags { font-size: 1.1rem; letter-spacing: 6px; text-transform: uppercase; font-weight: 500; color: var(--text-muted); }
         .core-tags span { color: var(--gold); margin: 0 15px; opacity: 0.5; }
 
@@ -204,7 +211,7 @@
         .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        h2 { text-align: center; font-size: 1.8rem; letter-spacing: 4px; margin-bottom: 3.5rem; position: relative; color: #ffffff; }
+        h2 { text-align: center; font-size: 1.8rem; letter-spacing: 4px; margin-bottom: 3.5rem; position: relative; color: #ffffff; text-transform: uppercase;}
         h2::after { content: ''; display: block; width: 40px; height: 2px; background-color: var(--gold); margin: 1rem auto 0; box-shadow: 0 0 10px rgba(229, 169, 61, 0.5); }
 
         /* Services */
@@ -215,51 +222,168 @@
         .service-card:hover::before { opacity: 1; }
         .service-card i { font-size: 2.5rem; color: var(--silver); margin-bottom: 2rem; transition: all 0.4s ease; position: relative; }
         .service-card:hover i { color: var(--gold); transform: scale(1.1); text-shadow: 0 0 15px rgba(229, 169, 61, 0.5); }
-        .service-card h3 { font-size: 1rem; margin-bottom: 1rem; letter-spacing: 2px; color: #ffffff; position: relative; }
+        .service-card h3 { font-size: 1rem; margin-bottom: 1rem; letter-spacing: 2px; color: #ffffff; position: relative; text-transform: uppercase;}
         .service-card p { color: var(--text-muted); font-size: 1rem; margin-bottom: 1.5rem; position: relative; }
-        .view-click-hint { font-size: 0.65rem; color: var(--gold); letter-spacing: 2px; opacity: 0; transform: translateY(10px); transition: all 0.4s ease; position: relative; }
+        .view-click-hint { font-size: 0.65rem; color: var(--gold); letter-spacing: 2px; opacity: 0; transform: translateY(10px); transition: all 0.4s ease; position: relative; text-transform: uppercase;}
         .service-card:hover .view-click-hint { opacity: 1; transform: translateY(0); }
 
-        /* Pricing Table */
-        .pricing-table { width: 100%; border-collapse: collapse; margin-top: 2rem; background-color: var(--bg-card); border: 1px solid var(--border-color); }
-        .pricing-table th, .pricing-table td { padding: 1.5rem; text-align: left; border-bottom: 1px solid var(--border-color); }
-        .pricing-table th { background-color: #0d0e14; color: var(--silver); font-size: 0.75rem; letter-spacing: 2px; border-bottom: 2px solid var(--gold); }
-        .pricing-table strong { color: #ffffff; font-size: 0.8rem; letter-spacing: 1px; }
-        .price-tag { color: var(--gold); font-weight: 700; font-size: 1.2rem; }
+        /* Investment Block */
+        .investment-block {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 4rem 3rem;
+            text-align: center;
+            border-radius: 2px;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .investment-block h3 {
+            font-size: 1.4rem;
+            color: #ffffff;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .investment-block p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .btn-outline {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 1.2rem 2.5rem;
+            background-color: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            font-family: 'Syncopate', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+        .btn-outline:hover {
+            background-color: var(--gold);
+            color: var(--bg-dark);
+            box-shadow: 0 0 20px rgba(229, 169, 61, 0.2);
+        }
 
         /* Contact Section */
         .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; background-color: var(--bg-card); padding: 4rem; border: 1px solid var(--border-color); position: relative; }
-        .contact-info h3 { font-size: 1.2rem; margin-bottom: 0.5rem; letter-spacing: 2px; color: #ffffff; }
+        .contact-info h3 { font-size: 1.2rem; margin-bottom: 0.5rem; letter-spacing: 2px; color: #ffffff; text-transform: uppercase;}
         .contact-info .title-sub { color: var(--silver); font-weight: 600; font-size: 1.1rem; letter-spacing: 3px; margin-bottom: 3rem; text-transform: uppercase; }
         .info-link-list { list-style: none; }
         .info-link-list li { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.8rem; font-size: 1.1rem; }
         .info-link-list i { color: var(--gold); font-size: 1.2rem; width: 20px; text-align: center; }
         .info-link-list a { color: var(--text-light); text-decoration: none; transition: color 0.3s; }
+        .info-link-list a:hover { color: var(--gold); }
         
         .contact-form form { display: flex; flex-direction: column; gap: 1.5rem; }
         .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 1.2rem; background-color: #0d0e14; border: 1px solid var(--border-color); color: #ffffff; font-family: 'Rajdhani', sans-serif; font-size: 1.1rem; transition: all 0.3s ease; }
         .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 15px rgba(229, 169, 61, 0.1); }
-        button.btn-submit { background-color: var(--gold); color: #090a0f; border: none; padding: 1.2rem; font-family: 'Syncopate', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 3px; transition: all 0.3s ease; }
+        button.btn-submit { background-color: var(--gold); color: #090a0f; border: none; padding: 1.2rem; font-family: 'Syncopate', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 3px; transition: all 0.3s ease; text-transform: uppercase;}
+
+        /* --- FIXED GALLERY MODAL (Viewport constraints applied) --- */
+        .gallery-overlay { 
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background-color: rgba(5, 5, 8, 0.98); z-index: 2000; justify-content: center; align-items: center; 
+            padding: 1.5rem; backdrop-filter: blur(5px); 
+        }
+        .gallery-box { 
+            max-width: 900px; width: 100%; 
+            max-height: 90vh; /* Fixed the height overflow issue */
+            display: flex; flex-direction: column;
+            background-color: var(--bg-card); border: 1px solid var(--border-color); 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8); 
+        }
+        .gallery-header { 
+            padding: 1.5rem; border-bottom: 1px solid var(--border-color); 
+            display: flex; justify-content: space-between; align-items: center; 
+        }
+        .gallery-header h3 { font-size: 1rem; color: var(--gold); margin: 0; text-transform: uppercase;}
+        .gallery-close { background: none; border: none; color: var(--text-muted); font-size: 2rem; line-height: 1; transition: color 0.3s; }
+        .gallery-close:hover { color: #ffffff; }
+
+        .gallery-body { 
+            padding: 1.5rem; 
+            overflow-y: auto; /* Allows internal scrolling on small screens */
+            text-align: center; 
+        }
+        .gallery-img-holder { 
+            width: 100%; 
+            height: 45vh; /* Responsive height scaling */
+            background-color: #050508; 
+            margin-bottom: 1.5rem; 
+        }
+        .gallery-img-holder img { 
+            width: 100%; height: 100%; 
+            object-fit: contain; /* Prevents image cutting */
+        }
+        .gallery-text {
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto;
+        }
 
         /* Footer */
         footer { background-color: #050508; border-top: 1px solid var(--border-color); padding: 3rem; text-align: center; font-size: 0.9rem; color: var(--text-muted); letter-spacing: 2px; font-family: 'Syncopate', sans-serif; text-transform: uppercase; }
-        
-        /* Gallery */
-        .gallery-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(5, 5, 8, 0.98); z-index: 2000; justify-content: center; align-items: center; padding: 1.5rem; backdrop-filter: blur(5px); }
-        .gallery-box { max-width: 900px; width: 100%; background-color: var(--bg-card); border: 1px solid var(--border-color); overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.8); }
-        .gallery-header { padding: 1.5rem; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; }
-        .gallery-header h3 { font-size: 1rem; color: var(--gold); }
-        .gallery-close { background: none; border: none; color: var(--text-muted); font-size: 2rem; transition: color 0.3s; }
-        .gallery-body { padding: 1.5rem; text-align: center; }
-        .gallery-img-holder { width: 100%; height: 450px; background-color: #050508; margin-bottom: 1.5rem; overflow: hidden; }
-        .gallery-img-holder img { width: 100%; height: 100%; object-fit: cover; }
 
+        /* --- MOBILE RESPONSIVENESS FIXES --- */
         @media (max-width: 768px) {
-            .nav-container { flex-direction: column; gap: 1.5rem; }
-            .hero h1 { font-size: 2.2rem; flex-direction: column; gap: 0.5rem; }
-            .contact-wrapper { grid-template-columns: 1fr; padding: 2rem; gap: 3rem; }
-            .pricing-table { display: block; overflow-x: auto; }
-            .gallery-img-holder { height: 280px; }
+            .nav-container { 
+                flex-direction: column; 
+                gap: 1rem; 
+                padding: 1rem; 
+            }
+            nav ul { 
+                flex-wrap: wrap; 
+                justify-content: center; 
+                gap: 1rem; 
+            }
+            nav a {
+                font-size: 0.8rem;
+            }
+            .hero { 
+                margin-top: 110px; 
+                min-height: 70vh; 
+                padding: 3rem 1rem; 
+            }
+            .hero h1 { 
+                font-size: 2.2rem; 
+                flex-direction: column; 
+                gap: 0.5rem; 
+                letter-spacing: 4px;
+            }
+            .sub-studio-container {
+                flex-direction: column;
+                gap: 0.8rem;
+                margin-top: 1rem;
+            }
+            .sub-line {
+                width: 60%;
+                height: 1px;
+            }
+            .container { 
+                padding: 3rem 1.5rem; 
+            }
+            section {
+                margin-bottom: 4rem;
+                scroll-margin-top: 150px; 
+            }
+            .contact-wrapper { 
+                grid-template-columns: 1fr; 
+                padding: 2rem; 
+                gap: 3rem; 
+            }
+            .investment-block { 
+                padding: 2.5rem 1.5rem; 
+            }
+            .gallery-img-holder { 
+                height: 35vh; 
+            }
         }
     </style>
 </head>
@@ -268,7 +392,7 @@
     <!-- Cinematic Preloader -->
     <div id="preloader">
         <i class="fa-solid fa-gear preloader-gear"></i>
-        <div class="sub-text" style="color: var(--gold); font-size: 0.8rem;">INITIALIZING OPTICS</div>
+        <div class="sub-text" style="color: var(--gold); font-size: 0.8rem;">LOADING</div>
     </div>
 
     <!-- Custom Studio Cursor -->
@@ -281,10 +405,10 @@
             <nav>
                 <ul>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#services">Specialties</a></li>
-                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#investment">Investment</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <li><a href="https://maitreyasb.github.io/Maitreya-Bhagwat/" target="_blank" style="color: var(--gold);">Personal Site <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.7rem; margin-left: 3px;"></i></a></li>
+                    <li><a href="https://maitreyasb.github.io/Maitreya-Bhagwat/" target="_blank" style="color: var(--gold);">Portfolio <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.7rem; margin-left: 3px;"></i></a></li>
                 </ul>
             </nav>
         </div>
@@ -292,6 +416,7 @@
 
     <div class="hero">
         <div class="hero-content-wrapper" id="parallax-wrapper">
+            
             <div class="logo-widget">
                 <div class="eye-lid">
                     <div class="eye-lid-content">
@@ -315,7 +440,7 @@
                 <div class="sub-line"></div>
             </div>
             <div class="core-tags">
-                Industrial <span>|</span> Product
+                Industrial <span>|</span> Product <span>|</span> Landscape
             </div>
         </div>
     </div>
@@ -323,93 +448,69 @@
     <div class="container">
 
         <section id="about" class="reveal">
-            <h2>The Visionary</h2>
+            <h2>About</h2>
             <div style="text-align: center; max-width: 750px; margin: 0 auto;">
                 <h3 style="color: var(--gold); font-size: 1.5rem; margin-bottom: 0.8rem; letter-spacing: 3px;">Maitreya Bhagwat</h3>
-                <p style="text-transform: uppercase; letter-spacing: 4px; font-size: 1rem; margin-bottom: 2rem; color: var(--silver); font-weight: 600;">Photographer & Visual Storyteller</p>
+                <p style="text-transform: uppercase; letter-spacing: 4px; font-size: 1rem; margin-bottom: 2rem; color: var(--silver); font-weight: 600;">Lead Photographer</p>
                 <p style="color: var(--text-muted); font-size: 1.15rem;">
-                    Operating out of Pune, Maharashtra, Metaleye Visual Studios bridges technical precision with artistic mastery. We transform mechanical processes, brand architecture, raw physical landscapes, and specialized visual assets into compelling cinematic stories.
+                    Based in Pune, Maharashtra. I specialize in bridging technical precision with artistic storytelling. Whether it's capturing the sheer scale of an industrial plant, the fine details of a product, or the mood of a landscape, my goal is to deliver clean, compelling, and highly intentional imagery for brands and businesses.
                 </p>
             </div>
         </section>
 
         <section id="services">
-            <h2 class="reveal">Specialties</h2>
+            <h2 class="reveal">Services</h2>
             <div class="services-grid">
                 
                 <div class="service-card reveal" onclick="handleCardClick('industrial')">
                     <i class="fa-solid fa-gear"></i>
                     <h3>Industrial</h3>
-                    <p>Machinery, manufacturing processes & heavy industrial environments.</p>
-                    <div class="view-click-hint">Initialize Visuals</div>
+                    <p>Documenting machinery, manufacturing floors, and heavy industrial environments.</p>
+                    <div class="view-click-hint">View Work</div>
                 </div>
 
                 <div class="service-card reveal" onclick="handleCardClick('product')" style="transition-delay: 0.1s;">
                     <i class="fa-solid fa-box-open"></i>
                     <h3>Product</h3>
-                    <p>Precision e-commerce, catalogue & high-end brand imagery.</p>
-                    <div class="view-click-hint">Initialize Visuals</div>
+                    <p>Clean, precise studio setups designed for commercial and brand catalogs.</p>
+                    <div class="view-click-hint">View Work</div>
                 </div>
 
                 <div class="service-card reveal" onclick="handleCardClick('landscape')" style="transition-delay: 0.2s;">
                     <i class="fa-solid fa-mountain-sun"></i>
                     <h3>Landscape</h3>
-                    <p>Dramatic environmental and architectural exterior framing.</p>
-                    <div class="view-click-hint">Initialize Visuals</div>
+                    <p>Expansive environmental, architectural, and exterior photography.</p>
+                    <div class="view-click-hint">View Work</div>
                 </div>
 
                 <div class="service-card reveal" onclick="handleCardClick('custom')" style="transition-delay: 0.3s;">
                     <i class="fa-solid fa-sliders"></i>
                     <h3>Custom</h3>
-                    <p>Bespoke visual productions tailored to your exact creative coordinates.</p>
-                    <div class="view-click-hint">Initialize Visuals</div>
+                    <p>Bespoke shoots tailored specifically to your creative and commercial needs.</p>
+                    <div class="view-click-hint">View Work</div>
                 </div>
 
             </div>
         </section>
 
-        <section id="pricing" class="reveal">
-            <h2>Fee Structure</h2>
-            <table class="pricing-table">
-                <thead>
-                    <tr>
-                        <th>Category</th>
-                        <th>Scope of Service</th>
-                        <th>Estimated Rate</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Industrial Photography</strong></td>
-                        <td>On-site plant coverage, heavy machineries tracking, safety actions workflow execution.</td>
-                        <td class="price-tag">₹45,000 / Day</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Product Photography</strong></td>
-                        <td>Studio macro shoots, studio lightning setups, studio background editing (per set batch).</td>
-                        <td class="price-tag">₹15,000 / Session</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Landscape Photography</strong></td>
-                        <td>Aperture architectural tracking, aerial land drone perspectives, raw environment sweeps.</td>
-                        <td class="price-tag">₹30,000 / Project</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Custom Solutions</strong></td>
-                        <td>Flexible frameworks tailored directly around dynamic production timelines and custom licensing.</td>
-                        <td class="price-tag">By Quotation</td>
-                    </tr>
-                </tbody>
-            </table>
+        <section id="investment" class="reveal">
+            <h2>Investment</h2>
+            <div class="investment-block">
+                <i class="fa-solid fa-handshake" style="font-size: 3rem; color: var(--gold); margin-bottom: 1.5rem;"></i>
+                <h3>Tailored To Your Project</h3>
+                <p>Every shoot has unique requirements—from location and scale to lighting and licensing. Instead of using rigid pricing packages, I build custom quotes based exactly on what your specific project needs to succeed.</p>
+                <p style="color: var(--silver); font-weight: 500;">Reach out below to discuss your ideas and get a detailed estimate.</p>
+                <a href="#contact" class="btn-outline">Discuss Your Project</a>
+            </div>
         </section>
 
         <section id="contact" class="reveal">
-            <h2>Initiate Project</h2>
+            <h2>Contact</h2>
             <div class="contact-wrapper">
                 
                 <div class="contact-info">
                     <h3>Maitreya Bhagwat</h3>
-                    <div class="title-sub">Photographer & Visual Storyteller</div>
+                    <div class="title-sub">Photographer</div>
                     
                     <ul class="info-link-list">
                         <li>
@@ -426,7 +527,7 @@
                         </li>
                         <li>
                             <i class="fa-solid fa-globe"></i>
-                            <a href="https://maitreyasb.github.io/Maitreya-Bhagwat/" target="_blank">Personal Portfolio</a>
+                            <a href="https://maitreyasb.github.io/Maitreya-Bhagwat/" target="_blank">Portfolio Website</a>
                         </li>
                         <li>
                             <i class="fa-solid fa-location-dot"></i>
@@ -441,24 +542,24 @@
                         <input type="hidden" name="subject" value="New Inquiry from Metaleye Visual Studios">
                         
                         <div class="form-group">
-                            <input type="text" id="name" name="name" placeholder="Your Name / Organization" required>
+                            <input type="text" id="name" name="name" placeholder="Name / Company" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder="Your Email Address" required>
+                            <input type="email" id="email" name="email" placeholder="Email Address" required>
                         </div>
                         <div class="form-group">
                             <select id="category-select" name="category" required>
-                                <option value="" disabled selected>Select Photography Aspect</option>
+                                <option value="" disabled selected>What do you need help with?</option>
                                 <option value="industrial">Industrial Photography</option>
                                 <option value="product">Product Photography</option>
                                 <option value="landscape">Landscape Photography</option>
-                                <option value="custom">Custom Configuration</option>
+                                <option value="custom">Custom Project</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <textarea id="message" name="message" rows="4" placeholder="Briefly describe the visual parameters of your project..." required></textarea>
+                            <textarea id="message" name="message" rows="4" placeholder="Tell me a bit about your project and timeline..." required></textarea>
                         </div>
-                        <button type="submit" class="btn-submit">Transmit Inquiry</button>
+                        <button type="submit" class="btn-submit">Send Message</button>
                     </form>
                 </div>
 
@@ -467,6 +568,7 @@
 
     </div>
 
+    <!-- Gallery Modal -->
     <div class="gallery-overlay" id="galleryOverlay">
         <div class="gallery-box">
             <div class="gallery-header">
@@ -531,20 +633,23 @@
         const hero = document.querySelector('.hero');
         const parallaxWrapper = document.getElementById('parallax-wrapper');
         
-        hero.addEventListener('mousemove', (e) => {
-            const x = (window.innerWidth / 2 - e.pageX) / 35;
-            const y = (window.innerHeight / 2 - e.pageY) / 35;
-            parallaxWrapper.style.transform = `translate(${x}px, ${y}px)`;
-        });
-        hero.addEventListener('mouseleave', () => {
-            parallaxWrapper.style.transform = `translate(0px, 0px)`;
-        });
+        // Disabled parallax on mobile devices for better performance/layout stability
+        if (window.innerWidth > 768) {
+            hero.addEventListener('mousemove', (e) => {
+                const x = (window.innerWidth / 2 - e.pageX) / 35;
+                const y = (window.innerHeight / 2 - e.pageY) / 35;
+                parallaxWrapper.style.transform = `translate(${x}px, ${y}px)`;
+            });
+            hero.addEventListener('mouseleave', () => {
+                parallaxWrapper.style.transform = `translate(0px, 0px)`;
+            });
+        }
 
         // --- 4. Scroll Reveal Intersection Observer ---
         const revealElements = document.querySelectorAll('.reveal');
         const revealOptions = {
-            threshold: 0.15,
-            rootMargin: "0px 0px -50px 0px"
+            threshold: 0.05,
+            rootMargin: "0px 0px -20px 0px"
         };
         const revealOnScroll = new IntersectionObserver(function(entries, observer) {
             entries.forEach(entry => {
@@ -561,24 +666,25 @@
         // --- Gallery Data & Logic ---
         const mediaSource = {
             industrial: {
-                title: "Industrial Operations",
-                desc: "High-contrast structural details, heavy automation systems, and rugged mechanical operations captured cleanly inside active warehouse environments.",
-                img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=900&q=80"
+                title: "Industrial",
+                desc: "Clean, high-contrast documentation of manufacturing floors and heavy machinery.",
+                // Image URL changed to local file as requested
+                img: "Industrial.jpg" 
             },
             product: {
-                title: "Product Telemetry",
-                desc: "Precision studio configurations highlighting materials, forms, and crisp visual alignments structured specifically for commercial branding catalogs.",
-                img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80"
+                title: "Product",
+                desc: "Studio configurations highlighting materials and form for commercial use.",
+                img: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1000&q=80"
             },
             landscape: {
-                title: "Environmental Scale",
-                desc: "Striking geographic horizons, corporate building architecture, and wide environmental dimensions framed under dramatic natural lightning.",
-                img: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80"
+                title: "Landscape",
+                desc: "Striking geographic horizons and architectural framing.",
+                img: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1000&q=80"
             },
             custom: {
-                title: "Bespoke Frameworks",
-                desc: "Specialized artistic themes, specific licensing profiles, and tailor-made lighting blueprints developed to unique design coordinates.",
-                img: "https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&w=900&q=80"
+                title: "Custom Projects",
+                desc: "Specialized shoots tailored to unique aesthetic guidelines and briefs.",
+                img: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1000&q=80"
             }
         };
 
@@ -608,7 +714,7 @@
         form.addEventListener('submit', function(e) {
             e.preventDefault(); 
             const submitButton = document.querySelector('.btn-submit');
-            submitButton.innerText = "Transmitting...";
+            submitButton.innerText = "Sending...";
             
             const formData = new FormData(form);
             const object = Object.fromEntries(formData);
@@ -623,20 +729,18 @@
                 body: json
             })
             .then(async (response) => {
-                let json = await response.json();
                 if (response.status == 200) {
-                    const name = document.getElementById('name').value;
-                    alert(`Transmission successful, ${name}. Your inquiry has been routed to Maitreya Bhagwat.`);
+                    alert(`Message sent successfully. I will get back to you shortly.`);
                     form.reset();
                 } else {
-                    alert("Transmission failed. Please verify your connection and try again.");
+                    alert("Something went wrong. Please try again or email directly.");
                 }
             })
             .catch(error => {
-                alert("Transmission failed. Please verify your connection and try again.");
+                alert("Something went wrong. Please try again or email directly.");
             })
             .finally(() => {
-                submitButton.innerText = "Transmit Inquiry";
+                submitButton.innerText = "Send Message";
                 submitButton.style.backgroundColor = "var(--gold)";
             });
         });
