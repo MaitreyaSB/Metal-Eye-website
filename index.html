@@ -7,25 +7,24 @@
     <title>Metaleye Visual Studios | Industrial &amp; Product Photography, Pune</title>
 
     <!-- SEO -->
-    <meta name="description" content="Industrial, product and landscape photography in Pune, Maharashtra. Metaleye Visual Studios documents manufacturing floors, machinery and products for brands and businesses.">
+    <meta name="description" content="Industrial, product and industrial landscape photography in Pune, Maharashtra. Metaleye Visual Studios documents manufacturing floors, machinery, plant sites and products for brands and businesses.">
     <link rel="canonical" href="https://metaleyevisualstudios.com/">
 
     <!-- Link previews (WhatsApp, Instagram, LinkedIn) -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://metaleyevisualstudios.com/">
     <meta property="og:title" content="Metaleye Visual Studios | Industrial &amp; Product Photography, Pune">
-    <meta property="og:description" content="Industrial, product and landscape photography in Pune, Maharashtra.">
+    <meta property="og:description" content="Industrial, product and industrial landscape photography in Pune, Maharashtra.">
     <meta property="og:image" content="https://metaleyevisualstudios.com/android-chrome-512x512.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="theme-color" content="#090a0f">
+    <meta name="theme-color" content="#0d0e11">
 
-    <!-- Favicon Links -->
     <link rel="icon" type="image/png" href="android-chrome-512x512.png">
     <link rel="apple-touch-icon" href="android-chrome-512x512.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500&family=Barlow+Semi+Condensed:wght@500;600&family=Rajdhani:wght@500;600&family=Syncopate:wght@700&display=swap" rel="stylesheet">
 
     <!-- Local business structured data: helps you show up for "industrial photographer Pune" -->
     <script type="application/ld+json">
@@ -44,263 +43,569 @@
         "addressCountry": "IN"
       },
       "areaServed": "Pune Metropolitan Region",
-      "knowsAbout": ["Industrial photography", "Product photography", "Landscape photography"],
+      "knowsAbout": ["Industrial photography", "Product photography", "Industrial landscape photography"],
       "sameAs": ["https://instagram.com/maitreya_sb"]
     }
     </script>
 
-    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --ink: #0d0e11;       /* page background */
+            --steel: #16181c;     /* raised surfaces */
+            --plate: #2a2d33;     /* lines and borders */
+            --silver: #9a9ea6;    /* secondary text */
+            --paper: #e9e7e3;     /* main text */
+            --brass: #c8a14a;     /* the one accent */
+            --brass-dim: #8a7034;
+
+            --wordmark: "Syncopate", "Arial Black", sans-serif;
+            --head: "Barlow Semi Condensed", "Arial Narrow", sans-serif;
+            --body: "Barlow", "Segoe UI", Arial, sans-serif;
+            --hud: "Rajdhani", "Arial Narrow", sans-serif;
+
+            --wrap: 1120px;
+            --gutter: clamp(20px, 5vw, 48px);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            background: var(--ink);
+            color: var(--paper);
+            font-family: var(--body);
+            font-size: 1.0625rem;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        img, svg { display: block; }
+        a { color: inherit; }
+        :focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; }
+
+        .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
+
+        h1, h2, h3 { font-family: var(--head); font-weight: 600; line-height: 1.1; margin: 0; letter-spacing: 0.01em; }
+        h2 { font-size: clamp(1.9rem, 3.6vw, 2.6rem); }
+        h3 { font-size: 1.35rem; }
+        p { margin: 0 0 1em; max-width: 62ch; }
+        .muted { color: var(--silver); }
+
+        /* ---------- Header ---------- */
+        .site-header {
+            position: sticky; top: 0; z-index: 10;
+            background: rgba(13, 14, 17, 0.92);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--plate);
+        }
+        .site-header .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+        .brand { font-family: var(--wordmark); font-weight: 700; font-size: 0.95rem; letter-spacing: 0.12em; text-decoration: none; }
+        .brand span { color: var(--brass); }
+        .site-nav ul { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; }
+        .site-nav a { text-decoration: none; color: var(--silver); font-size: 0.95rem; }
+        .site-nav a:hover { color: var(--paper); }
+        .site-nav .nav-cta { color: var(--brass); }
+        .menu-toggle { display: none; background: none; border: 1px solid var(--plate); color: var(--paper); font: inherit; padding: 6px 12px; cursor: pointer; }
+
+        /* ---------- Hero: framed like a viewfinder ---------- */
+        .hero { position: relative; padding: clamp(40px, 6vw, 72px) 0; border-bottom: 1px solid var(--plate); overflow: hidden; }
+        .viewfinder { position: relative; max-width: var(--wrap); margin: 0 auto; padding: clamp(48px, 8vw, 96px) var(--gutter) clamp(72px, 9vw, 104px); text-align: center; }
+        .vf-corner { position: absolute; width: 34px; height: 34px; border-color: var(--silver); border-style: solid; border-width: 0; opacity: .7; }
+        .vf-corner.tl { top: 0; left: var(--gutter); border-top-width: 1.5px; border-left-width: 1.5px; }
+        .vf-corner.tr { top: 0; right: var(--gutter); border-top-width: 1.5px; border-right-width: 1.5px; }
+        .vf-corner.bl { bottom: 0; left: var(--gutter); border-bottom-width: 1.5px; border-left-width: 1.5px; }
+        .vf-corner.br { bottom: 0; right: var(--gutter); border-bottom-width: 1.5px; border-right-width: 1.5px; }
+        .hud { position: absolute; bottom: 14px; left: calc(var(--gutter) + 48px); right: calc(var(--gutter) + 48px); display: flex; justify-content: space-between; gap: 16px; font-family: var(--hud); font-weight: 500; font-size: 0.95rem; letter-spacing: 0.08em; color: var(--silver); }
+        .hud .exposure { display: flex; gap: 22px; }
+        .hud .rec { color: var(--brass); }
+
+        .hero-inner { position: relative; will-change: transform; transition: transform .25s ease-out; }
+        .eye-widget { width: clamp(120px, 16vw, 168px); margin: 0 auto 28px; }
+        .eye-widget .gear { fill: none; stroke: var(--brass); stroke-width: 1.4; transform-origin: 100px 100px; animation: gear-in 1.8s cubic-bezier(.5, 0, .2, 1) .1s both; }
+        .eye-widget .glass { fill: url(#glass); stroke: var(--plate); stroke-width: 1; }
+        .eye-widget .blade { fill: none; stroke: var(--brass-dim); stroke-width: 1; }
+        .eye-widget .iris { transform-origin: 100px 100px; animation: close-iris 1.6s cubic-bezier(.6, 0, .2, 1) .3s both; }
+        .eye-widget .core { fill: var(--brass); transform-origin: 100px 100px; animation: core-in .5s ease-out 1.6s both; }
+        .eye-widget .flare { fill: rgba(233, 231, 227, 0.18); }
+        @keyframes gear-in { from { transform: rotate(-90deg); opacity: 0; } to { transform: rotate(0); opacity: 1; } }
+        @keyframes close-iris { from { transform: rotate(-70deg) scale(1.4); opacity: 0; } to { transform: rotate(0) scale(1); opacity: 1; } }
+        @keyframes core-in { from { transform: scale(0); } to { transform: scale(1); } }
+
+        .wordmark { font-family: var(--wordmark); font-weight: 700; font-size: clamp(2.4rem, 8vw, 6rem); line-height: 1; letter-spacing: 0.06em; margin: 0; }
+        .wordmark .eye { color: var(--brass); }
+        .sub-studio { display: flex; align-items: center; justify-content: center; gap: 18px; margin: 18px 0 14px; }
+        .sub-studio span:not(.label) { height: 1px; width: clamp(40px, 8vw, 90px); background: var(--brass-dim); }
+        .sub-studio .label { font-family: var(--hud); font-weight: 600; font-size: 1.15rem; letter-spacing: 0.4em; padding-left: 0.4em; color: var(--silver); white-space: nowrap; }
+        .core-tags { font-family: var(--hud); font-weight: 500; font-size: 1.1rem; letter-spacing: 0.12em; color: var(--paper); margin: 0 auto 36px; max-width: none; }
+        .core-tags i { font-style: normal; color: var(--brass); padding: 0 12px; }
+        .hero-statement { font-family: var(--head); font-weight: 500; font-size: clamp(1.2rem, 2.1vw, 1.5rem); line-height: 1.35; max-width: 40ch; margin: 0 auto 32px; color: var(--silver); }
+        .actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+        .btn {
+            display: inline-block; text-decoration: none; font-family: var(--head); font-weight: 600;
+            font-size: 1.05rem; letter-spacing: 0.04em; padding: 13px 26px; border: 1px solid var(--brass);
+            transition: background-color .2s, color .2s;
+        }
+        .btn-solid { background: var(--brass); color: var(--ink); }
+        .btn-solid:hover { background: #d8b45e; }
+        .btn-line { color: var(--brass); }
+        .btn-line:hover { background: rgba(200, 161, 74, 0.1); }
+
+        /* Capability strip */
+        .strip { border-bottom: 1px solid var(--plate); overflow: hidden; padding: 16px 0; }
+        .strip-track { display: flex; width: max-content; animation: slide 48s linear infinite; }
+        .strip:hover .strip-track { animation-play-state: paused; }
+        .strip ul { display: flex; list-style: none; margin: 0; padding: 0; }
+        .strip li { font-family: var(--hud); font-weight: 500; font-size: 1.15rem; letter-spacing: 0.06em; color: var(--silver); white-space: nowrap; padding: 0 28px; position: relative; }
+        .strip li::after { content: ""; position: absolute; right: -3px; top: 50%; width: 6px; height: 6px; border: 1px solid var(--brass); transform: translateY(-50%) rotate(45deg); }
+        @keyframes slide { to { transform: translateX(-50%); } }
+
+        /* ---------- Sections ---------- */
+        section { padding: clamp(64px, 9vw, 112px) 0; border-bottom: 1px solid var(--plate); }
+        .section-head { display: grid; grid-template-columns: 1fr 1.6fr; gap: 48px; margin-bottom: 56px; align-items: end; }
+        .section-head p { margin: 0; color: var(--silver); }
+
+        /* About */
+        .about .wrap { display: grid; grid-template-columns: 1fr 1.6fr; gap: 48px; }
+        .about-name { font-family: var(--head); font-weight: 600; font-size: 1.5rem; margin: 0 0 4px; }
+        .about-role { color: var(--brass); margin: 0 0 24px; }
+        .facts { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--plate); }
+        .facts li { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--plate); font-size: 0.98rem; }
+        .facts span:first-child { color: var(--silver); }
+        .about-text p { font-size: 1.15rem; }
+
+        /* Services: a spec sheet, not cards */
+        .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--plate); border-left: 1px solid var(--plate); }
+        .service { position: relative; padding: 36px 32px 32px; border-right: 1px solid var(--plate); border-bottom: 1px solid var(--plate); }
+        .service::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .3s;
+            background: radial-gradient(320px circle at var(--x, 50%) var(--y, 50%), rgba(200, 161, 74, 0.09), transparent 60%); }
+        .service:hover::before { opacity: 1; }
+        .service > * { position: relative; }
+        .service h3 { margin-bottom: 12px; }
+        .service p { color: var(--silver); margin-bottom: 20px; }
+        .service .terms { font-size: 0.92rem; color: var(--brass); margin: 0; }
+        .service-mark { width: 28px; height: 28px; margin-bottom: 20px; stroke: var(--brass); fill: none; stroke-width: 1.5; }
+
+        /* Work */
+        .work-panel { border: 1px solid var(--plate); background: var(--steel); padding: clamp(28px, 5vw, 56px); display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: center; }
+        .work-panel p:last-of-type { margin-bottom: 28px; }
+        .frame-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+        .frame-grid div { position: relative; aspect-ratio: 4 / 5; background: var(--ink); }
+        .frame-grid div::before, .frame-grid div::after { content: ""; position: absolute; width: 14px; height: 14px; border: 0 solid var(--silver); opacity: .6; }
+        .frame-grid div::before { top: 8px; left: 8px; border-top-width: 1px; border-left-width: 1px; }
+        .frame-grid div::after { bottom: 8px; right: 8px; border-bottom-width: 1px; border-right-width: 1px; }
+        .frame-grid div:nth-child(2)::before, .frame-grid div:nth-child(2)::after { border-color: var(--brass); opacity: 1; }
+        .frame-grid span { position: absolute; bottom: 8px; left: 10px; font-family: var(--hud); font-size: 0.85rem; letter-spacing: 0.08em; color: var(--silver); }
+
+        /* Process: a real sequence, so it is numbered */
+        .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--brass); counter-reset: step; }
+        .steps li { padding: 28px 24px 0 0; counter-increment: step; }
+        .steps li::before { content: counter(step); display: block; font-family: var(--head); font-weight: 600; font-size: 2.4rem; color: var(--brass); line-height: 1; margin-bottom: 16px; }
+        .steps h3 { margin-bottom: 8px; }
+        .steps p { color: var(--silver); font-size: 0.98rem; }
+
+        /* Terms */
+        .terms-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-bottom: 56px; }
+        .terms-grid h3 { margin-bottom: 8px; }
+        .terms-grid p { color: var(--silver); font-size: 0.98rem; }
+        .quote-band { border: 1px solid var(--brass); padding: 32px; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+        .quote-band p { margin: 0; font-family: var(--head); font-weight: 500; font-size: 1.35rem; max-width: 46ch; }
+
+        /* Contact */
+        .contact .wrap { display: grid; grid-template-columns: 1fr 1.3fr; gap: 64px; }
+        .contact-list { list-style: none; margin: 32px 0 0; padding: 0; border-top: 1px solid var(--plate); }
+        .contact-list li { padding: 14px 0; border-bottom: 1px solid var(--plate); display: grid; grid-template-columns: 110px 1fr; gap: 12px; }
+        .contact-list span { color: var(--silver); }
+        .contact-list a { text-decoration: none; }
+        .contact-list a:hover { color: var(--brass); }
+
+        form { display: grid; gap: 18px; }
+        label { display: block; font-size: 0.92rem; color: var(--silver); margin-bottom: 6px; }
+        input, select, textarea {
+            width: 100%; background: var(--steel); color: var(--paper); border: 1px solid var(--plate);
+            border-radius: 0; padding: 13px 14px; font: inherit; font-size: 1rem;
+        }
+        input:focus, select:focus, textarea:focus { outline: none; border-color: var(--brass); }
+        select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--silver) 50%), linear-gradient(135deg, var(--silver) 50%, transparent 50%); background-position: calc(100% - 20px) 55%, calc(100% - 15px) 55%; background-size: 5px 5px; background-repeat: no-repeat; }
+        textarea { resize: vertical; min-height: 130px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+        .hp-field { position: absolute; left: -9999px; }
+        button[type="submit"] { justify-self: start; cursor: pointer; }
+        button[type="submit"]:disabled { opacity: .6; cursor: wait; }
+        .form-status { min-height: 1.6em; margin: 0; font-size: 0.98rem; }
+        .form-status.ok { color: var(--brass); }
+        .form-status.err { color: #e07a6a; }
+
+        /* Footer */
+        footer { padding: 40px 0; color: var(--silver); font-size: 0.92rem; }
+        footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+        footer .motto { color: var(--brass); letter-spacing: 0.18em; font-family: var(--head); font-weight: 500; }
+
+        /* ---------- Responsive ---------- */
+        @media (max-width: 900px) {
+            .about .wrap, .contact .wrap, .section-head, .work-panel { grid-template-columns: 1fr; }
+            .hud .exposure span:nth-child(n+3) { display: none; }
+            .steps { grid-template-columns: repeat(2, 1fr); row-gap: 36px; }
+            .terms-grid { grid-template-columns: 1fr; gap: 24px; }
+            .section-head { gap: 16px; }
+        }
+        @media (max-width: 720px) {
+            .menu-toggle { display: block; }
+            .site-nav { position: absolute; top: 64px; left: 0; right: 0; background: var(--ink); border-bottom: 1px solid var(--plate); display: none; }
+            .site-nav.open { display: block; }
+            .site-nav ul { flex-direction: column; gap: 0; padding: 8px var(--gutter) 16px; }
+            .site-nav a { display: block; padding: 10px 0; }
+            .services-grid { grid-template-columns: 1fr; }
+            .steps { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .contact-list li { grid-template-columns: 1fr; gap: 2px; }
+            .hud { font-size: 0.82rem; left: calc(var(--gutter) + 8px); right: calc(var(--gutter) + 8px); }
+            .hud .loc { display: none; }
+            .sub-studio { gap: 12px; }
+            .sub-studio span:not(.label) { width: 28px; }
+            .sub-studio .label { font-size: 0.95rem; letter-spacing: 0.28em; padding-left: 0.28em; }
+            .core-tags { font-size: 0.95rem; letter-spacing: 0.06em; }
+            .core-tags i { padding: 0 7px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .eye-widget .gear, .eye-widget .iris, .eye-widget .core, .strip-track { animation: none; }
+            .hero-inner { transition: none; transform: none !important; }
+        }
+    </style>
 
     <!-- Metricool website analytics -->
     <script>function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"2e45f565fc59d8644ea9029a022c97c8"})});</script>
 </head>
 <body>
 
-    <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
-        <symbol id="i-gear" viewBox="0 0 512 512"><path d="M495 315l-44-25a201 201 0 000-68l44-25a12 12 0 006-14 259 259 0 00-57-99 12 12 0 00-15-2l-44 25a197 197 0 00-59-34V23a12 12 0 00-10-12 261 261 0 00-114 0 12 12 0 00-10 12v50a197 197 0 00-59 34l-43-25a12 12 0 00-15 2 259 259 0 00-57 99 12 12 0 005 14l44 25a201 201 0 000 68l-44 25a12 12 0 00-5 14 259 259 0 0057 99 12 12 0 0015 2l43-25a197 197 0 0059 34v50a12 12 0 0010 12 261 261 0 00114 0 12 12 0 0010-12v-50a197 197 0 0059-34l44 25a12 12 0 0015-2 259 259 0 0057-99 12 12 0 00-6-14zM256 336a80 80 0 110-160 80 80 0 010 160z"/></symbol>
-        <symbol id="i-box" viewBox="0 0 640 512"><path d="M58 141l19 47a24 24 0 0022 15h189V96H80a24 24 0 00-22 45zm503-45H352v107h189a24 24 0 0022-33l19-47a24 24 0 00-21-27zM32 272v192a48 48 0 0048 48h208V272H32zm320 240h208a48 48 0 0048-48V272H352v240z"/></symbol>
-        <symbol id="i-mountain" viewBox="0 0 640 512"><path d="M112 160a48 48 0 1096 0 48 48 0 00-96 0zm436 268L421 224a24 24 0 00-41 0l-58 95-84-135a24 24 0 00-41 0L18 428a24 24 0 0020 36h564a24 24 0 0020-36z"/></symbol>
-        <symbol id="i-sliders" viewBox="0 0 512 512"><path d="M0 416a32 32 0 0132-32h50a81 81 0 01156 0h242a32 32 0 010 64H238a81 81 0 01-156 0H32a32 32 0 01-32-32zm128 0a32 32 0 1064 0 32 32 0 00-64 0zM320 256a32 32 0 1164 0 32 32 0 01-64 0zm32-80a81 81 0 00-78 60H32a32 32 0 000 64h242a81 81 0 00156 0h50a32 32 0 000-64h-50a81 81 0 00-78-60zM192 96a32 32 0 1064 0 32 32 0 00-64 0zm32-80a81 81 0 00-78 60H32a32 32 0 000 64h114a81 81 0 00156 0h178a32 32 0 000-64H302a81 81 0 00-78-60z"/></symbol>
-        <symbol id="i-camera" viewBox="0 0 512 512"><path d="M448 32H304l-15-42a24 24 0 00-22-16H179a24 24 0 00-23 16l-14 42H64A64 64 0 000 96v320a64 64 0 0064 64h384a64 64 0 0064-64V96a64 64 0 00-64-64zM236 128a120 120 0 110 240 120 120 0 010-240zm0 200a80 80 0 100-160 80 80 0 000 160z"/></symbol>
-        <symbol id="i-handshake" viewBox="0 0 640 512"><path d="M323 96l-15 15a48 48 0 0068 68l16-16 84 84v144h48V128h123a16 16 0 0016-16V80a16 16 0 00-16-16H400a189 189 0 00-77-16zM48 64H1a16 16 0 00-16 16v32a16 16 0 0016 16h123v263h48V247l124-124-27-27a141 141 0 00-100-32H48zm112 335l-18 18a24 24 0 0034 34l18-18a24 24 0 00-34-34zm67 67l-18 18a24 24 0 0034 34l18-18a24 24 0 00-34-34z"/></symbol>
-        <symbol id="i-phone" viewBox="0 0 512 512"><path d="M497 381l-112-48a24 24 0 00-28 7l-50 60A370 370 0 01112 205l60-49a24 24 0 007-28L131 15a24 24 0 00-27-14L0 25A24 24 0 00-19 48c0 256 208 464 464 464a24 24 0 0023-19l24-104a24 24 0 005-8z"/></symbol>
-        <symbol id="i-envelope" viewBox="0 0 512 512"><path d="M502 191c4-3 10 0 10 5v220a48 48 0 01-48 48H48a48 48 0 01-48-48V196c0-5 6-8 10-5 22 18 52 40 154 114 21 15 57 48 92 47 36 1 72-32 92-47 102-74 132-96 154-114zM256 320c23 1 56-30 73-42 132-96 142-104 172-128 6-4 9-11 9-18v-20a48 48 0 00-48-48H48A48 48 0 000 112v20c0 7 3 14 9 18 30 24 40 32 172 128 17 12 50 43 73 42z"/></symbol>
-        <symbol id="i-globe" viewBox="0 0 496 512"><path d="M248 8a248 248 0 100 496 248 248 0 000-496zm181 165h-72a381 381 0 00-38-97 209 209 0 01110 97zM248 48c19 27 34 58 44 92h-88c10-34 25-65 44-92zM55 304a207 207 0 010-96h83a439 439 0 000 96H55zm18 40h72c9 34 22 65 38 97a209 209 0 01-110-97zm72-176H73a209 209 0 01110-97 381 381 0 00-38 97zm103 296c-19-27-34-58-44-92h88c-10 34-25 65-44 92zm53-132h-106a396 396 0 010-96h106a396 396 0 010 96zm11 129a381 381 0 0038-97h72a209 209 0 01-110 97zm49-137a439 439 0 000-96h83a207 207 0 010 96h-83z"/></symbol>
-        <symbol id="i-pin" viewBox="0 0 384 512"><path d="M172 503C27 293 0 271 0 192a192 192 0 01384 0c0 79-27 101-172 311a24 24 0 01-40 0zM192 272a80 80 0 100-160 80 80 0 000 160z"/></symbol>
-        <symbol id="i-instagram" viewBox="0 0 448 512"><path d="M224 141a115 115 0 100 230 115 115 0 000-230zm0 190a75 75 0 110-150 75 75 0 010 150zm146-195a27 27 0 11-54 0 27 27 0 0154 0zm76 27c-2-36-10-68-36-94s-58-34-94-36c-37-2-149-2-186 0-36 2-68 10-94 36s-34 58-36 94c-2 37-2 149 0 186 2 36 10 68 36 94s58 34 94 36c37 2 149 2 186 0 36-2 68-10 94-36s34-58 36-94c2-37 2-148 0-186zm-48 226a76 76 0 01-43 43c-30 12-100 9-132 9s-102 3-132-9a76 76 0 01-43-43c-12-30-9-100-9-132s-3-102 9-132a76 76 0 0143-43c30-12 100-9 132-9s102-3 132 9a76 76 0 0143 43c12 30 9 100 9 132s3 102-9 132z"/></symbol>
-        <symbol id="i-external" viewBox="0 0 512 512"><path d="M320 0a32 32 0 000 64h73L201 256a32 32 0 0045 45l192-192v73a32 32 0 0064 0V32a32 32 0 00-32-32H320zM80 32A80 80 0 000 112v320a80 80 0 0080 80h320a80 80 0 0080-80V320a32 32 0 00-64 0v112a16 16 0 01-16 16H80a16 16 0 01-16-16V112a16 16 0 0116-16h112a32 32 0 000-64H80z"/></symbol>
-    </svg>
-
-
-    <div id="preloader">
-        <svg class="preloader-gear" aria-hidden="true"><use href="#i-gear"></use></svg>
-        <div class="sub-text" style="color: var(--gold); font-size: 0.8rem;">LOADING</div>
-    </div>
-
-    <div class="cursor-dot" aria-hidden="true"></div>
-    <div class="cursor-outline" aria-hidden="true"></div>
-
-    <header>
-        <div class="nav-container">
-            <div class="logo-text">METAL<span>EYE</span></div>
-            <nav aria-label="Main">
+    <header class="site-header">
+        <div class="wrap">
+            <a href="#top" class="brand" aria-label="Metal Eye Visual Studios, back to top">METAL<span>EYE</span></a>
+            <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+            <nav class="site-nav" id="site-nav" aria-label="Main">
                 <ul>
-                    <li><a href="#about">About</a></li>
                     <li><a href="#services">Services</a></li>
-                    <li><a href="#approach">Approach</a></li>
-                    <li><a href="#investment">Investment</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="https://maitreyasb.github.io/Maitreya-Bhagwat/" target="_blank" rel="noopener noreferrer" style="color: var(--gold);">Street Work <svg class="icon ext-icon" aria-hidden="true"><use href="#i-external"></use></svg></a></li>
+                    <li><a href="#process">How it works</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="https://maitreyasb.github.io/Maitreya-Bhagwat/" target="_blank" rel="noopener noreferrer">Street work</a></li>
+                    <li><a href="#contact" class="nav-cta">Get a quote</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <div class="hero">
-        <div class="hero-content-wrapper" id="parallax-wrapper">
-            <div class="logo-widget" aria-hidden="true">
-                <div class="eye-lid">
-                    <div class="eye-lid-content">
-                        <svg class="gear-icon" aria-hidden="true"><use href="#i-gear"></use></svg>
-                        <div class="lens-inner">
-                            <div class="lens-glass"></div>
-                            <div class="lens-flare-overlay"></div>
-                            <div class="aperture-core"></div>
-                        </div>
+    <main id="top">
+        <div class="hero">
+            <div class="viewfinder">
+                <span class="vf-corner tl" aria-hidden="true"></span><span class="vf-corner tr" aria-hidden="true"></span>
+                <span class="vf-corner bl" aria-hidden="true"></span><span class="vf-corner br" aria-hidden="true"></span>
+
+                <div class="hero-inner" id="parallax">
+                    <svg class="eye-widget" viewBox="0 0 200 200" aria-hidden="true">
+                        <defs>
+                            <radialGradient id="glass" cx="40%" cy="35%" r="70%">
+                                <stop offset="0" stop-color="#2b2f36"/>
+                                <stop offset="1" stop-color="#0b0c0f"/>
+                            </radialGradient>
+                        </defs>
+                        <polygon class="gear" points="183.7,92.6 193.8,94.5 193.8,105.5 183.7,107.4 183.5,109.1 180.1,125.2 180.1,125.2 188.8,130.8 184.6,141.0 174.5,138.9 173.7,140.3 164.4,153.9 164.4,153.9 170.3,162.4 162.4,170.3 153.9,164.4 152.6,165.5 138.9,174.5 138.9,174.5 141.0,184.6 130.8,188.8 125.2,180.1 123.6,180.6 107.4,183.7 107.4,183.7 105.5,193.8 94.5,193.8 92.6,183.7 90.9,183.5 74.8,180.1 74.8,180.1 69.2,188.8 59.0,184.6 61.1,174.5 59.7,173.7 46.1,164.4 46.1,164.4 37.6,170.3 29.7,162.4 35.6,153.9 34.5,152.6 25.5,138.9 25.5,138.9 15.4,141.0 11.2,130.8 19.9,125.2 19.4,123.6 16.3,107.4 16.3,107.4 6.2,105.5 6.2,94.5 16.3,92.6 16.5,90.9 19.9,74.8 19.9,74.8 11.2,69.2 15.4,59.0 25.5,61.1 26.3,59.7 35.6,46.1 35.6,46.1 29.7,37.6 37.6,29.7 46.1,35.6 47.4,34.5 61.1,25.5 61.1,25.5 59.0,15.4 69.2,11.2 74.8,19.9 76.4,19.4 92.6,16.3 92.6,16.3 94.5,6.2 105.5,6.2 107.4,16.3 109.1,16.5 125.2,19.9 125.2,19.9 130.8,11.2 141.0,15.4 138.9,25.5 140.3,26.3 153.9,35.6 153.9,35.6 162.4,29.7 170.3,37.6 164.4,46.1 165.5,47.4 174.5,61.1 174.5,61.1 184.6,59.0 188.8,69.2 180.1,74.8 180.6,76.4 183.7,92.6"/>
+                        <circle class="glass" cx="100" cy="100" r="72"/>
+                        <g class="iris">
+                            <path class="blade" d="M100 40 L152 70 L127 85 Z"/>
+                            <path class="blade" d="M152 70 L152 130 L127 115 Z"/>
+                            <path class="blade" d="M152 130 L100 160 L100 130 Z"/>
+                            <path class="blade" d="M100 160 L48 130 L73 115 Z"/>
+                            <path class="blade" d="M48 130 L48 70 L73 85 Z"/>
+                            <path class="blade" d="M48 70 L100 40 L100 70 Z"/>
+                        </g>
+                        <circle class="core" cx="100" cy="100" r="9"/>
+                        <ellipse class="flare" cx="78" cy="72" rx="16" ry="7" transform="rotate(-35 78 72)"/>
+                    </svg>
+
+                    <h1 class="wordmark">METAL <span class="eye">EYE</span></h1>
+                    <div class="sub-studio"><span></span><span class="label">VISUAL STUDIOS</span><span></span></div>
+                    <p class="core-tags">Industrial<i>|</i>Product<i>|</i>Industrial Landscape</p>
+                    <p class="hero-statement">Machinery, shop floors, finished parts and plant sites across Pune, photographed on location in working conditions.</p>
+                    <div class="actions">
+                        <a href="#contact" class="btn btn-solid">Get a quote</a>
+                        <a href="#services" class="btn btn-line">See services</a>
                     </div>
                 </div>
-            </div>
-            <h1>
-                <span class="title-metal">METAL</span>
-                <span class="title-eye">EYE</span>
-            </h1>
-            <div class="sub-studio-container">
-                <div class="sub-line"></div>
-                <div class="sub-text">Visual Studios</div>
-                <div class="sub-line"></div>
-            </div>
-            <div class="core-tags">
-                Industrial <span>|</span> Product <span>|</span> Landscape
+
+                <div class="hud" aria-hidden="true">
+                    <span class="rec">Pune, Maharashtra</span>
+                    <span class="exposure"><span>f/8</span><span>1/125</span><span>ISO 400</span><span>RAW</span></span>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="container">
-
-        <section id="about" class="reveal">
-            <h2>About</h2>
-            <div style="text-align: center; max-width: 750px; margin: 0 auto;">
-                <h3 style="color: var(--gold); font-size: 1.5rem; margin-bottom: 0.8rem; letter-spacing: 3px;">Maitreya Bhagwat</h3>
-                <p style="text-transform: uppercase; letter-spacing: 4px; font-size: 1rem; margin-bottom: 2rem; color: var(--silver); font-weight: 600;">Photographer</p>
-                <p style="color: var(--text-muted); font-size: 1.15rem;">
-                    Based in Pune, Maharashtra. Six years behind a camera, most of it spent on black-and-white street and documentary work &mdash; which is where I learned to read light I don't control and find structure in a scene fast. I now bring that to commercial work: machinery, manufacturing floors, and products, shot clean and shot with intent.
-                </p>
+        <div class="strip" aria-label="What I photograph">
+            <div class="strip-track">
+                <ul><li>CNC and VMC machining</li><li>Fabrication and welding</li><li>Shop floors</li><li>Finished components</li><li>Plant exteriors</li><li>Process documentation</li><li>Tool rooms</li><li>Catalogue products</li></ul>
+                <ul aria-hidden="true"><li>CNC and VMC machining</li><li>Fabrication and welding</li><li>Shop floors</li><li>Finished components</li><li>Plant exteriors</li><li>Process documentation</li><li>Tool rooms</li><li>Catalogue products</li></ul>
             </div>
-        </section>
+        </div>
 
-        <section id="services">
-            <h2 class="reveal">Services</h2>
-            <div class="services-grid">
-                <div class="service-card reveal">
-                    <svg class="icon" aria-hidden="true"><use href="#i-gear"></use></svg>
-                    <h3>Industrial</h3>
-                    <p>Machinery, manufacturing floors, and heavy industrial environments &mdash; on site, in working conditions.</p>
-                    <span class="card-tag">On-site / Half or full day</span>
+        <section id="services" class="services">
+            <div class="wrap">
+                <div class="section-head">
+                    <h2>Services</h2>
+                    <p>Every brief is quoted on its own, but most work falls into one of these four.</p>
                 </div>
-                <div class="service-card reveal" style="transition-delay: 0.1s;">
-                    <svg class="icon" aria-hidden="true"><use href="#i-box"></use></svg>
-                    <h3>Product</h3>
-                    <p>Controlled lighting for catalogue, e-commerce and brand use. Clean backgrounds or in-context setups.</p>
-                    <span class="card-tag">Per item / Per batch</span>
-                </div>
-                <div class="service-card reveal" style="transition-delay: 0.2s;">
-                    <svg class="icon" aria-hidden="true"><use href="#i-mountain"></use></svg>
-                    <h3>Landscape</h3>
-                    <p>Site exteriors, architecture, and environmental context shots for reports and company profiles.</p>
-                    <span class="card-tag">Location based</span>
-                </div>
-                <div class="service-card reveal" style="transition-delay: 0.3s;">
-                    <svg class="icon" aria-hidden="true"><use href="#i-sliders"></use></svg>
-                    <h3>Custom</h3>
-                    <p>Shoots built around a specific brief &mdash; events, process documentation, or mixed requirements.</p>
-                    <span class="card-tag">Scoped per brief</span>
+                <div class="services-grid">
+                    <article class="service">
+                        <svg class="service-mark" viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="5"/><path d="M14 2v5M14 21v5M2 14h5M21 14h5M5.5 5.5l3.5 3.5M19 19l3.5 3.5M5.5 22.5L9 19M19 9l3.5-3.5"/></svg>
+                        <h3>Industrial</h3>
+                        <p>Machinery, CNC and VMC work, fabrication and shop floors, photographed on site without stopping production.</p>
+                        <p class="terms">On site, half or full day</p>
+                    </article>
+                    <article class="service">
+                        <svg class="service-mark" viewBox="0 0 28 28" aria-hidden="true"><path d="M4 9l10-5 10 5v10l-10 5-10-5z"/><path d="M4 9l10 5 10-5M14 14v10"/></svg>
+                        <h3>Product</h3>
+                        <p>Components and finished goods under controlled light, on clean backgrounds or in context, for catalogues and e-commerce.</p>
+                        <p class="terms">Per item or per batch</p>
+                    </article>
+                    <article class="service">
+                        <svg class="service-mark" viewBox="0 0 28 28" aria-hidden="true"><path d="M2 24h24M5 24V12l5 3V9l5 3V6l5 3v15"/><path d="M21 4v5"/></svg>
+                        <h3>Industrial Landscape</h3>
+                        <p>Plant exteriors, yards, structures and industrial sites in their surroundings, for company profiles, reports and websites. Aerial and drone views are shot with licensed drone partners.</p>
+                        <p class="terms">On location, aerial on request</p>
+                    </article>
+                    <article class="service">
+                        <svg class="service-mark" viewBox="0 0 28 28" aria-hidden="true"><rect x="3" y="3" width="22" height="22"/><path d="M3 10h22M10 10v15"/></svg>
+                        <h3>Custom</h3>
+                        <p>Process documentation, events, plant visits or a mix of the above, built around a specific brief.</p>
+                        <p class="terms">Scoped per brief</p>
+                    </article>
                 </div>
             </div>
         </section>
 
         <!--
           WORK SECTION
-          Replaces the old gallery modal, which loaded stock photos from Unsplash.
-          Delete this whole section and build a real gallery the moment you have
-          your own industrial or product frames. Until then, this is the honest version.
+          Replace this panel with a real gallery as soon as you have your own industrial frames.
         -->
-        <section id="work" class="reveal">
-            <h2>Work</h2>
-            <div class="work-block">
-                <svg class="block-icon" aria-hidden="true"><use href="#i-camera"></use></svg>
-                <p>The commercial portfolio is being built right now. I'd rather show you nothing than show you someone else's photographs.</p>
-                <p>In the meantime, my street and documentary work is public &mdash; it's the clearest look at how I see, compose, and handle difficult light.</p>
-                <a href="https://maitreyasb.github.io/Maitreya-Bhagwat/" target="_blank" rel="noopener noreferrer" class="btn-outline">View Street Work</a>
-            </div>
-        </section>
-
-        <section id="approach" class="reveal">
-            <h2>Approach</h2>
-            <div class="approach-grid">
-                <div class="approach-item">
-                    <h3>On Site</h3>
-                    <p>I work around your operations, not against them. Comfortable with plant safety briefings, PPE, and shooting in low light without stopping a line.</p>
-                </div>
-                <div class="approach-item">
-                    <h3>Delivery</h3>
-                    <p>Culled and colour-corrected high-resolution files, plus web-optimised versions. First edit within five working days of the shoot.</p>
-                </div>
-                <div class="approach-item">
-                    <h3>Licensing</h3>
-                    <p>Usage rights agreed in writing before we shoot &mdash; web, print, or full commercial. No surprises later.</p>
-                </div>
-                <div class="approach-item">
-                    <h3>Revisions</h3>
-                    <p>Revisions are handled on request, so the final set fits your commercial requirements exactly.</p>
+        <section id="work" class="work">
+            <div class="wrap">
+                <div class="work-panel">
+                    <div>
+                        <h2>Work</h2>
+                        <p style="margin-top:20px">The industrial portfolio is being built right now, with workshops and plants around Talegaon and Pune. I'd rather show you nothing than show you someone else's photographs.</p>
+                        <p class="muted">Until then, my street and documentary work is the clearest look at how I compose and handle difficult light.</p>
+                        <a href="https://maitreyasb.github.io/Maitreya-Bhagwat/" target="_blank" rel="noopener noreferrer" class="btn btn-line">View street work</a>
+                    </div>
+                    <div class="frame-grid" aria-hidden="true"><div><span>01</span></div><div><span>02</span></div><div><span>03</span></div></div>
                 </div>
             </div>
         </section>
 
-        <section id="investment" class="reveal">
-            <h2>Investment</h2>
-            <div class="investment-block">
-                <svg class="block-icon" aria-hidden="true"><use href="#i-handshake"></use></svg>
-                <h3>Tailored To Your Project</h3>
-                <p>Every shoot has different requirements &mdash; location, scale, lighting, and how you plan to use the images. Instead of rigid packages, I quote against your actual brief.</p>
-                <!--
-                  STRONGLY RECOMMENDED: replace the line below with a real starting figure,
-                  e.g. "Half-day on-site shoots start at Rs. X,XXX." A number filters out
-                  time-wasters and makes the whole page read as a working business.
-                -->
-                <p style="color: var(--silver); font-weight: 500;">Tell me what you need and I'll send a detailed estimate within 48 hours.</p>
-                <a href="#contact" class="btn-outline">Discuss Your Project</a>
+        <section id="process" class="process">
+            <div class="wrap">
+                <div class="section-head">
+                    <h2>How a shoot works</h2>
+                    <p>Built around your operations, so the line keeps running.</p>
+                </div>
+                <ol class="steps">
+                    <li>
+                        <h3>Brief</h3>
+                        <p>You share what the photos are for and where they will be used. A written estimate follows.</p>
+                    </li>
+                    <li>
+                        <h3>Site check</h3>
+                        <p>We agree on areas, timing and anything confidential. I follow your safety briefing and PPE rules.</p>
+                    </li>
+                    <li>
+                        <h3>Shoot</h3>
+                        <p>On location, in working conditions and low light, without stopping a machine.</p>
+                    </li>
+                    <li>
+                        <h3>Delivery</h3>
+                        <p>Culled, colour-corrected high-resolution files plus web-ready versions, delivered digitally.</p>
+                    </li>
+                </ol>
             </div>
         </section>
 
-        <section id="contact" class="reveal">
-            <h2>Contact</h2>
-            <div class="contact-wrapper">
-                <div class="contact-info">
-                    <h3>Maitreya Bhagwat</h3>
-                    <div class="title-sub">Photographer</div>
-                    <ul class="info-link-list">
-                        <li>
-                            <svg class="icon" aria-hidden="true"><use href="#i-phone"></use></svg>
-                            <a href="tel:+918767350426">+91 87673 50426</a>
-                        </li>
-                        <li>
-                            <!-- Swap this for hello@metaleyevisualstudios.com once your domain email is live -->
-                            <svg class="icon" aria-hidden="true"><use href="#i-envelope"></use></svg>
-                            <a href="mailto:mbhagwat2007@gmail.com">mbhagwat2007@gmail.com</a>
-                        </li>
-                        <li>
-                            <svg class="icon" aria-hidden="true"><use href="#i-instagram"></use></svg>
-                            <a href="https://instagram.com/maitreya_sb" target="_blank" rel="noopener noreferrer">@maitreya_sb</a>
-                        </li>
-                        <li>
-                            <svg class="icon" aria-hidden="true"><use href="#i-globe"></use></svg>
-                            <a href="https://maitreyasb.github.io/Maitreya-Bhagwat/" target="_blank" rel="noopener noreferrer">Street &amp; documentary work</a>
-                        </li>
-                        <li>
-                            <svg class="icon" aria-hidden="true"><use href="#i-pin"></use></svg>
-                            <span>Pune, Maharashtra, India</span>
-                        </li>
+        <section id="terms" class="terms">
+            <div class="wrap">
+                <div class="section-head">
+                    <h2>Usage and pricing</h2>
+                    <p>No rigid packages. You pay for what the project actually needs.</p>
+                </div>
+                <div class="terms-grid">
+                    <div>
+                        <h3>Licensing in writing</h3>
+                        <p>Usage rights for web, print or full commercial use are agreed before the shoot. No surprises later.</p>
+                    </div>
+                    <div>
+                        <h3>Revisions included</h3>
+                        <p>Changes are handled on request so the final set fits your requirements.</p>
+                    </div>
+                    <div>
+                        <h3>Confidential areas respected</h3>
+                        <p>Nothing you mark as restricted is photographed or published.</p>
+                    </div>
+                </div>
+                <!-- RECOMMENDED: add a starting figure here, e.g. "Half-day on-site shoots start at Rs. X,XXX." -->
+                <div class="quote-band">
+                    <p>Quotations vary according to site, scope and intended usage of the images. Share your requirements to receive a detailed estimate.</p>
+                    <a href="#contact" class="btn btn-solid">Get a quote</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="wrap">
+                <div>
+                    <h2>About</h2>
+                    <p class="about-name" style="margin-top:28px">Maitreya Bhagwat</p>
+                    <p class="about-role">Photographer, Metal Eye Visual Studios</p>
+                    <ul class="facts">
+                        <li><span>Based in</span><span>Talegaon, Pune</span></li>
+                        <li><span>Behind a camera</span><span>6 years</span></li>
+                        <li><span>Covers</span><span>Pune Metropolitan Region</span></li>
+                    </ul>
+                </div>
+                <div class="about-text">
+                    <p>Most of my six years behind a camera went into black-and-white street and documentary work. That is where I learned to read light I don't control and find structure in a scene fast.</p>
+                    <p>I now bring that to commercial work: machinery, manufacturing floors, plant sites and products, shot clean and shot with intent, for businesses that want their work to look as precise as it is.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="wrap">
+                <div>
+                    <h2>Get a quote</h2>
+                    <p class="muted" style="margin-top:20px">Share a few details about your project. For a quicker response, call or WhatsApp.</p>
+                    <ul class="contact-list">
+                        <li><span>Phone</span><a href="tel:+918767350426">+91 87673 50426</a></li>
+                        <!-- Swap this for hello@metaleyevisualstudios.com once your domain email is live -->
+                        <li><span>Email</span><a href="mailto:mbhagwat2007@gmail.com">mbhagwat2007@gmail.com</a></li>
+                        <li><span>Instagram</span><a href="https://instagram.com/maitreya_sb" target="_blank" rel="noopener noreferrer">@maitreya_sb</a></li>
+                        <li><span>Location</span>Pune, Maharashtra, India</li>
                     </ul>
                 </div>
 
-                <div class="contact-form">
-                    <form id="bookingForm" novalidate>
-                        <input type="hidden" name="access_key" value="8c634195-b53e-4aec-9cc7-2ba262698fbe">
-                        <input type="hidden" name="subject" value="New Inquiry from Metaleye Visual Studios">
+                <form id="bookingForm" novalidate>
+                    <input type="hidden" name="access_key" value="8c634195-b53e-4aec-9cc7-2ba262698fbe">
+                    <input type="hidden" name="subject" value="New Inquiry from Metaleye Visual Studios">
+                    <div class="hp-field" aria-hidden="true">
+                        <label for="botcheck">Leave this empty</label>
+                        <input type="checkbox" name="botcheck" id="botcheck" tabindex="-1" autocomplete="off">
+                    </div>
 
-                        <!-- Honeypot: bots fill this in, people never see it -->
-                        <div class="hp-field" aria-hidden="true">
-                            <label for="botcheck">Leave this empty</label>
-                            <input type="checkbox" name="botcheck" id="botcheck" tabindex="-1" autocomplete="off">
+                    <div class="form-row">
+                        <div>
+                            <label for="name">Name or company</label>
+                            <input type="text" id="name" name="name" autocomplete="organization" required>
                         </div>
-
-                        <div class="form-group">
-                            <label for="name" class="sr-only">Name or company</label>
-                            <input type="text" id="name" name="name" placeholder="Name / Company" autocomplete="organization" required>
+                        <div>
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" autocomplete="email" required>
                         </div>
-                        <div class="form-group">
-                            <label for="email" class="sr-only">Email address</label>
-                            <input type="email" id="email" name="email" placeholder="Email Address" autocomplete="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="category-select" class="sr-only">What do you need help with?</label>
-                            <select id="category-select" name="category" required>
-                                <option value="" disabled selected>What do you need help with?</option>
-                                <option value="industrial">Industrial Photography</option>
-                                <option value="product">Product Photography</option>
-                                <option value="landscape">Landscape Photography</option>
-                                <option value="custom">Custom Project</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="message" class="sr-only">About your project</label>
-                            <textarea id="message" name="message" rows="4" placeholder="Tell me a bit about your project and timeline..." required></textarea>
-                        </div>
-
-                        <button type="submit" class="btn-submit">Send Message</button>
-                        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
-                    </form>
-                </div>
+                    </div>
+                    <div>
+                        <label for="category-select">What do you need?</label>
+                        <select id="category-select" name="category" required>
+                            <option value="" disabled selected>Choose a service</option>
+                            <option value="industrial">Industrial photography</option>
+                            <option value="product">Product photography</option>
+                            <option value="industrial-landscape">Industrial landscape photography</option>
+                            <option value="custom">Custom project</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="message">About your project</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Site location, what you want photographed, timeline" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-solid">Send enquiry</button>
+                    <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+                </form>
             </div>
         </section>
-
-    </div>
+    </main>
 
     <footer>
-        <p>&copy; <span id="year">2026</span> Metaleye Visual Studios. All Rights Reserved.<br><br>
-        <span style="color: var(--gold);">CAPTURE. CREATE. CONNECT.</span></p>
+        <div class="wrap">
+            <span>&copy; <span id="year">2026</span> Metaleye Visual Studios. All rights reserved.</span>
+            <span class="motto">CAPTURE. CREATE. CONNECT.</span>
+        </div>
     </footer>
 
-    <script src="script.js" defer></script>
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Hero: gentle tilt with the mouse (as on the original site)
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var hero = document.getElementById('parallax');
+        if (!reduce && window.matchMedia('(pointer: fine)').matches) {
+            document.querySelector('.hero').addEventListener('mousemove', function (e) {
+                var x = (e.clientX / window.innerWidth - 0.5) * 10;
+                var y = (e.clientY / window.innerHeight - 0.5) * 8;
+                hero.style.transform = 'translate(' + x + 'px,' + y + 'px)';
+            });
+            document.querySelector('.hero').addEventListener('mouseleave', function () { hero.style.transform = ''; });
+        }
+
+        // Services: brass light follows the cursor
+        document.querySelectorAll('.service').forEach(function (card) {
+            card.addEventListener('mousemove', function (e) {
+                var r = card.getBoundingClientRect();
+                card.style.setProperty('--x', (e.clientX - r.left) + 'px');
+                card.style.setProperty('--y', (e.clientY - r.top) + 'px');
+            });
+        });
+
+        // Mobile menu
+        var toggle = document.querySelector('.menu-toggle');
+        var nav = document.getElementById('site-nav');
+        toggle.addEventListener('click', function () {
+            var open = nav.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', open);
+        });
+        nav.addEventListener('click', function (e) {
+            if (e.target.tagName === 'A') { nav.classList.remove('open'); toggle.setAttribute('aria-expanded', false); }
+        });
+
+        // Contact form (Web3Forms)
+        var form = document.getElementById('bookingForm');
+        var status = document.getElementById('formStatus');
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            status.className = 'form-status';
+            if (!form.checkValidity()) {
+                status.textContent = 'Fill in your name, a valid email, the service and a short message.';
+                status.classList.add('err');
+                form.reportValidity();
+                return;
+            }
+            var button = form.querySelector('button[type="submit"]');
+            button.disabled = true;
+            button.textContent = 'Sending…';
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify(Object.fromEntries(new FormData(form)))
+            })
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+                if (data.success) {
+                    status.textContent = 'Enquiry sent. You will receive a reply shortly.';
+                    status.classList.add('ok');
+                    form.reset();
+                } else {
+                    throw new Error();
+                }
+            })
+            .catch(function () {
+                status.textContent = 'Your enquiry could not be sent. Call or WhatsApp +91 87673 50426 instead.';
+                status.classList.add('err');
+            })
+            .finally(function () {
+                button.disabled = false;
+                button.textContent = 'Send enquiry';
+            });
+        });
+    </script>
 </body>
 </html>
